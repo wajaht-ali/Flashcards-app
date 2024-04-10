@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post("/signup", createUserController);
 router.post("/login", loginUserController);
-router.put("/update-user/:id", requireSignedIn, updateUserController);
+router.put("/update-user", requireSignedIn, updateUserController);
 
 export { router as userRouter };

@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import { userRouter } from "./routes/userRoutes.js";
+import { cardRouter } from "./routes/cardRoutes.js";
 
 //config env
 dotenv.config();
@@ -25,6 +26,7 @@ connectDB();
 
 //routes
 app.use("/api/v1/userAuth", userRouter);
+app.use("/api/v1/cards", cardRouter);
 
 app.get("/", (req, res) => {
   res.send("Flash cards app is live now");

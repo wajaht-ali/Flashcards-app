@@ -108,7 +108,6 @@ export const loginUserController = async (req, res) => {
 //update user
 export const updateUserController = async (req, res) => {
   try {
-    const { id } = req.param;
     const { name, email, gender, answer, password } = req.body;
 
     //validation
@@ -117,10 +116,17 @@ export const updateUserController = async (req, res) => {
         .status(400)
         .send({ message: "Please provide all required fields." });
     }
+    const user = await UserModel.findById(req.user._id);
     const hashedPassword = await hashedPasswordFtn(password);
     const updateUser = await UserModel.findByIdAndUpdate(
-      id,
-      { name, email, answer, gender, password: hashedPassword },
+      req.user._id,
+      {
+        name: name || user.name,
+        email: email || user.email,
+        answer: answer || user.answer,
+        gender: gender || user.gender,
+        password: hashedPassword || user.password,
+      },
       { new: true }
     );
     if (!updateUser) {
