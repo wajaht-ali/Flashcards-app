@@ -142,3 +142,22 @@ export const updateUserController = async (req, res) => {
     console.log(`Error with update user ${error}`);
   }
 };
+//delete User
+export const deleteUserController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await UserModel.findByIdAndDelete(id);
+    return res.status(201).send({
+      success: true,
+      message: "User deleted sucessfully!",
+      user,
+    });
+  } catch (error) {
+    console.log(`Error with delete card ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error with delete card",
+      error,
+    });
+  }
+};
