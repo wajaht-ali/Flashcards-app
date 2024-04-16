@@ -1,10 +1,10 @@
-import './App.css'
+import "./styles/App.css";
 
 function App() {
   
 
   return (
-    <div className="">
+    <div className="w-full h-screen flex flex-col items-center justify-center border p-2 font-bold text-lg">
       <h2>Flash Cards App</h2>
     </div>
   )
