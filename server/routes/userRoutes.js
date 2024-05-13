@@ -2,6 +2,7 @@ import express from "express";
 import {
   createUserController,
   deleteUserController,
+  forgotPasswordController,
   loginUserController,
   updateUserController,
 } from "../controllers/userControllers.js";
@@ -12,6 +13,8 @@ const router = express.Router();
 router.post("/signup", createUserController);
 //login user
 router.post("/login", loginUserController);
+//forgot password
+router.put("/forgot-password", forgotPasswordController);
 //update user
 router.put("/update-user/:id", requireSignedIn, updateUserController);
 //delete user

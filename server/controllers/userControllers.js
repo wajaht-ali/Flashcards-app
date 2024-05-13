@@ -107,6 +107,60 @@ export const loginUserController = async (req, res) => {
   }
 };
 
+//forgot password
+export const forgotPasswordController = async (req, res) => {
+  try {
+    const { email, answer, newPassword } = req.body;
+    //validation
+    if (!email) {
+      return res.status(400).send({
+        success: false,
+        message: "Please provide email address",
+      });
+    }
+    if (!answer) {
+      return res.status(400).send({
+        success: false,
+        message: "Please provide valid answer",
+      });
+    }
+    if (!newPassword) {
+      return res.status(400).send({
+        success: false,
+        message: "Please provide new password",
+      });
+    }
+
+    //existing user
+    const user = await UserModel.findOne({ email, answer });
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "Invalid email or answer",
+      });
+    }
+
+    const hashed = await hashedPasswordFtn(newPassword);
+    await UserModel.findByIdAndUpdate(
+      user._id,
+      {
+        password: hashed,
+      },
+      { new: true }
+    );
+    res.status(201).send({
+      success: true,
+      message: "Password updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error with forgot password controller",
+    });
+  }
+};
+
 //update user
 export const updateUserController = async (req, res) => {
   try {
