@@ -106,7 +106,7 @@ const Footer = () => {
                             <ul
                                 className="space-y-4"
                                 key={idx}>
-                                <h4 className="text-gray-800 font-medium">
+                                <h4 className="text-gray-800 font-bold md:font-medium">
                                     {item.label}
                                 </h4>
                                 {

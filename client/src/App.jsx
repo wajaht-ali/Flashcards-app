@@ -1,18 +1,14 @@
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
 import "./styles/App.css";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home.jsx";
-import Footer from "./components/Footer.jsx";
 
 function App() {
 
   return (
-    <div className="w-full h-screen flex flex-col items-center border p-2 font-bold text-lg">
-      <Navbar />
+    <div className="w-full h-screen flex flex-col items-center border font-bold text-lg">
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-      <Footer />
     </div>
   )
 }
