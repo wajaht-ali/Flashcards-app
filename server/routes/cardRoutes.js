@@ -8,8 +8,10 @@ const router = express.Router();
 
 //create card
 router.post("/create-card", createCardController);
+
 //delete card
 router.delete("/delete-card/:id", deleteCardController);
+
 //update card
 router.put("/update-card/:id", updateCardController);
 export { router as cardRouter };

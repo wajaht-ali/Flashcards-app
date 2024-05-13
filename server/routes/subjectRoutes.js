@@ -8,6 +8,7 @@ const router = express.Router();
 
 //create subject
 router.post("/create-subject", createSubjectController);
+
 //delete subject
 router.delete("/delete-subject/:id", deleteSubjectController);
 

@@ -5,7 +5,7 @@ export const createSubjectController = async (req, res) => {
   try {
     const { name } = req.body;
     if (!name) {
-      return res.status(400).send({
+      return res.status(404).send({
         success: false,
         message: "Name is required!",
       });
@@ -13,14 +13,14 @@ export const createSubjectController = async (req, res) => {
     const subject = await new SubjectModel({
       name: name,
     }).save();
-    res.status(200).send({
+    res.status(201).send({
       success: true,
       message: "Subject created sucessfully!",
       subject,
     });
   } catch (error) {
     console.log(`Error with create subject ${error}`);
-    res.status(400).send({
+    res.status(404).send({
       success: false,
       message: "Error with create subject",
       error,
@@ -39,7 +39,7 @@ export const deleteSubjectController = async (req, res) => {
     });
   } catch (error) {
     console.log(`Error with delete subject ${error}`);
-    res.status(400).send({
+    res.status(404).send({
       success: false,
       message: "Error with delete subject",
       error,
