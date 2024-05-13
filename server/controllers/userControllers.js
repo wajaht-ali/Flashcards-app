@@ -53,6 +53,7 @@ export const createUserController = async (req, res) => {
     });
   }
 };
+
 //login user
 export const loginUserController = async (req, res) => {
   try {
@@ -105,6 +106,7 @@ export const loginUserController = async (req, res) => {
     });
   }
 };
+
 //update user
 export const updateUserController = async (req, res) => {
   try {
@@ -142,6 +144,7 @@ export const updateUserController = async (req, res) => {
     console.log(`Error with update user ${error}`);
   }
 };
+
 //delete User
 export const deleteUserController = async (req, res) => {
   try {

@@ -13,7 +13,7 @@ router.post("/signup", createUserController);
 //login user
 router.post("/login", loginUserController);
 //update user
-router.put("/update-user", requireSignedIn, updateUserController);
+router.put("/update-user/:id", requireSignedIn, updateUserController);
 //delete user
 router.delete("/delete-user/:id", deleteUserController);
 
