@@ -72,7 +72,7 @@ const Footer = () => {
         }
     ]
     return (
-        <footer className="text-black bg-white px-4 py-5 w-full max-w-screen-xl mx-auto md:px-8">
+        <footer className="text-black bg-white px-4 py-5 w-full mx-auto md:px-8">
             <div className="gap-6 justify-between md:flex">
                 <div className="flex-1">
                     <div className="max-w-xs">
