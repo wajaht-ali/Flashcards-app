@@ -4,6 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { GoGlobe } from "react-icons/go";
 import { FaGithub } from "react-icons/fa";
+import logo from "../assets/R__1_-removebg-preview.png";
 
 const Footer = () => {
     const footerNavs = [
@@ -72,11 +73,11 @@ const Footer = () => {
         }
     ]
     return (
-        <footer className="text-black bg-white px-4 py-5 w-full mx-auto md:px-8">
+        <footer className="text-black px-4 py-5 w-full mx-auto md:px-8">
             <div className="gap-6 justify-between md:flex">
                 <div className="flex-1">
                     <div className="max-w-xs">
-                        <img src="https://www.floatui.com/logo.svg" className="w-32" />
+                        <img src={logo} className="w-32" />
                         <p className="leading-relaxed mt-2 text-[15px] font-normal">
                             Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
                         </p>
