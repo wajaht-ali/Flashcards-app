@@ -88,8 +88,6 @@ import { FaBars, FaTimes, FaUser, } from "react-icons/fa";
 const Navbar = () => {
 
     const [state, setState] = useState(false)
-
-    // Replace javascript:void(0) paths with your paths
     const navigation = [
         { title: "Features", path: "javascript:void(0)" },
         { title: "Integrations", path: "javascript:void(0)" },
@@ -101,7 +99,7 @@ const Navbar = () => {
         <nav className="bg-gray-900 border-b w-full md:static md:text-sm md:border-none">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <Link to="javascript:void(0)">
+                    <Link to="/">
                         <img
                             src={logo}
                             width={120}
@@ -109,8 +107,8 @@ const Navbar = () => {
                             alt="Float UI logo"
                         />
                     </Link>
-                    <div className="md:hidden">
-                        <button className="text-white hover:text-gray-800"
+                    <div className="md:hidden left-10">
+                        <button className="text-white"
                             onClick={() => setState(!state)}
                         >
                             {
@@ -135,12 +133,12 @@ const Navbar = () => {
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                             <li>
-                                <Link to="javascript:void(0)" className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
+                                <Link to="/login" className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
                                     Log in
                                 </Link>
                             </li>
                             <li>
-                                <Link to="javascript:void(0)" className="block py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
+                                <Link to="/register" className="block py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
                                     Sign in
                                 </Link>
                             </li>
