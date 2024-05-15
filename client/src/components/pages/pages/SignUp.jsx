@@ -29,7 +29,6 @@ const SignUP = () => {
         }
     }
 
-
     return (
         <Layout>
             <main className="w-full h-full flex flex-col items-center justify-center bg-gray-50 sm:px-4">

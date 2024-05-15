@@ -18,10 +18,10 @@ const Home = () => {
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
               </p>
               <div className="pt-10 items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
-                <Link to="javascript:void(0)" className="px-5 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
+                <Link to="javascript:void(0)" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
                   Get started
                 </Link>
-                <Link to="javascript:void(0)" className="px-5 py-3 text-black duration-150 bg-white hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg">
+                <Link to="javascript:void(0)" className="px-5 mx-2 py-3 text-black duration-150 bg-white hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg">
                   Try it out
                 </Link>
               </div>
