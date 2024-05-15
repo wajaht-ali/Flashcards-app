@@ -1,20 +1,29 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../../Layout/Layout"
 import logo from "../../../assets/R__1_-removebg-preview.png";
 import { useState } from "react";
 import axios from "axios";
+import { useAuth } from "../../../context/auth";
 
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    
+    const [auth, setAuth] = useAuth();
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
             const res = await axios.post("/api/v1/userAuth/login", { email, password });
-            if(res.data.success) {
-                alert("Login successfully!");
+            if (res?.data?.success) {
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token,
+                })
+                localStorage.setItem('auth', JSON.stringify(res.data));
+                navigate("/");
             }
             else {
                 alert(res.data.message);
