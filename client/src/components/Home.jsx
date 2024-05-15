@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import Layout from "../Layout/Layout.jsx";
 import { Link } from 'react-router-dom';
+import Layout from './Layout/Layout';
 
 const Home = () => {
   return (

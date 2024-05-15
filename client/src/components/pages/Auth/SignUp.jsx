@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../../../Layout/Layout";
+import Layout from "../../Layout/Layout";
 import logo from "../../../assets/R__1_-removebg-preview.png";
 import { useState } from "react";
 import axios from "axios";

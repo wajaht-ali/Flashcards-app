@@ -4,7 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { GoGlobe } from "react-icons/go";
 import { FaGithub } from "react-icons/fa";
-import logo from "../assets/R__1_-removebg-preview.png";
+import logo from "../../assets/R__1_-removebg-preview.png";
 
 const Footer = () => {
     const footerNavs = [

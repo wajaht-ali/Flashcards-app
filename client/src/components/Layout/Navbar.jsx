@@ -81,7 +81,7 @@
 // export default Navbar;
 
 import { useState } from 'react'
-import logo from "../assets/R__1_-removebg-preview.png";
+import logo from "../../assets/R__1_-removebg-preview.png";
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser, } from "react-icons/fa";
 

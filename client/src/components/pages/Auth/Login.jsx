@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../../../Layout/Layout"
 import logo from "../../../assets/R__1_-removebg-preview.png";
 import { useState } from "react";
 import axios from "axios";
-import { useAuth } from "../../../context/auth";
+import Layout from "../../Layout/Layout.jsx";
+import { useAuth } from "../../../context/auth.jsx";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -19,7 +19,7 @@ const Login = () => {
             if (res?.data?.success) {
                 setAuth({
                     ...auth,
-                    user: res.data.user,
+                    user: res?.data?.user,
                     token: res.data.token,
                 })
                 localStorage.setItem('auth', JSON.stringify(res.data));
