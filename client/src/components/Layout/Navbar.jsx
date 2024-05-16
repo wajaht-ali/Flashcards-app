@@ -82,12 +82,27 @@
 
 import { useState } from 'react'
 import logo from "../../assets/R__1_-removebg-preview.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser, } from "react-icons/fa";
+import { useAuth } from '../../context/auth';
 
 const Navbar = () => {
-
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        try {
+            setAuth({
+                ...auth,
+                user: null,
+                token: "",
+            });
+            localStorage.removeItem('auth');
+            navigate('/');
+        } catch (error) {
+            console.log(`Error with logging out ${error}`);
+        }
+    }
     const [state, setState] = useState(false)
+    const [auth, setAuth] = useAuth();
     const navigation = [
         { title: "Features", path: "javascript:void(0)" },
         { title: "Integrations", path: "javascript:void(0)" },
@@ -132,21 +147,34 @@ const Navbar = () => {
                         }
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
-                            <li>
-                                <Link to="/login" className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
-                                    Log in
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/register" className="block py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
-                                    Sign in
-                                </Link>
-                            </li>
+                            {
+                                auth?.token ?
+                                    (<ul>
+                                        <li>
+                                            <Link onClick={handleLogout} className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
+                                                Logout
+                                            </Link>
+                                        </li>
+                                    </ul>)
+                                    :
+                                    (<ul className='w-full flex flex-col md:flex-row items-center'>
+                                        <li className='w-full'>
+                                            <Link to="/login" className="w-full block m-2 p-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
+                                                Log in
+                                            </Link>
+                                        </li>
+                                        <li className='w-full'>
+                                            <Link to="/register" className="w-full block m-2 py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
+                                                Sign up
+                                            </Link>
+                                        </li>
+                                    </ul>)
+                            }
                         </div>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </div >
+            </div >
+        </nav >
     )
 }
 

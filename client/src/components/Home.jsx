@@ -2,13 +2,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Layout from './Layout/Layout';
+import { useAuth } from '../context/auth';
 
 const Home = () => {
+  const [auth, setAuth] = useAuth();
   return (
     <div>
       <Layout>
         <div className="bg-gray-900 h-screen grid place-items-center">
           <section className="mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex md:px-8">
+            <div>
+              <h2 className="text-blue-700">Welcome back: <span className="text-white font-semibold">{auth?.user?.name}</span></h2>
+            </div>
             <div className="space-y-4 py-4 flex-1 sm:text-center lg:text-left">
               <h1 className="text-white font-bold text-4xl xl:text-5xl">
                 One page Template for
