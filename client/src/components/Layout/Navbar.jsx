@@ -138,10 +138,7 @@ const Navbar = () => {
                             {
                                 auth?.token ?
                                     (<ul>
-                                        <li>
-                                            {/* <Link onClick={handleLogout} className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
-                                                Logout
-                                            </Link> */}
+                                        <li className="block text-center text-white">
                                             <Dropdown />
                                         </li>
                                     </ul>)
@@ -153,7 +150,7 @@ const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li className='w-full'>
-                                            <Link to="/register" className="w-full block m-2 py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
+                                            <Link to="/register" className="w-full block m-2 py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow">
                                                 Sign up
                                             </Link>
                                         </li>

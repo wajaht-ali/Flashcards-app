@@ -36,7 +36,7 @@ export default function Dropdown() {
                 user: null,
                 token: "",
             });
-            localStorage.removeItem('auth');
+            localStorage.removeItem('cardAuth');
             navigate('/');
         } catch (error) {
             console.log(`Error with logging out ${error}`);
@@ -60,7 +60,7 @@ export default function Dropdown() {
                         <button
                             ref={trigger}
                             onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className="mb-3.5 inline-flex items-center justify-center gap-2 rounded-lg border border-stroke  text-white px-6 py-2 text-base font-medium">
+                            className="mb-3.5 inline-flex items-center justify-center gap-2 rounded-lg border border-stroke  text-white px-6 py-2 text-base font-medium hover:bg-indigo-600 hover:text-white transition-all">
                             Profile
                             <span
                                 className={`duration-100 ${dropdownOpen ? "-scale-y-100" : ""}`}>
@@ -71,14 +71,14 @@ export default function Dropdown() {
                             ref={dropdown}
                             onFocus={() => setDropdownOpen(true)}
                             onBlur={() => setDropdownOpen(false)}
-                            className={`absolute right-0 top-full w-[240px] divide-y divide-stroke overflow-hidden rounded-lg bg-white ${dropdownOpen ? "block" : "hidden"}`}>
+                            className={`absolute right-0 top-full w-[240px] divide-y divide-stroke overflow-hidden rounded-lg bg-white border border-gray-400 ${dropdownOpen ? "block" : "hidden"}`}>
 
                             <div className="flex items-center gap-3 px-4 py-3">
                                 <div className="relative aspect-square w-10 rounded-full">
                                     {auth?.user?.gender === "male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
                                     <span className="absolute -right-0.5 -top-0.5 block h-3.5 w-3.5 rounded-full border-2 border-white bg-green"></span>
                                 </div>
-                                <div>
+                                <div className="text-start">
                                     <p className="text-sm font-semibold">
                                         {auth?.user?.name}
                                     </p>
@@ -89,7 +89,7 @@ export default function Dropdown() {
                             </div>
                             <div>
                                 <Link
-                                    to="#0"
+                                    to="/dashboard"
                                     className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-dark hover:bg-gray-50">
                                     View profile
                                 </Link>
