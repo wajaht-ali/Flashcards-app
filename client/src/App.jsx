@@ -6,6 +6,7 @@ import Login from "./components/pages/Auth/Login.jsx";
 import PrivateRoute from "../src/components/routes/ProtectedRoute.jsx";
 import Dashboard from "./components/pages/Admin/Dashboard.jsx";
 import AdminRoute from "./components/routes/AdminRoute.jsx";
+import PageNotFound from "./components/PageNotFound.jsx";
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Route path="/dashboard" element={<AdminRoute />} >
           <Route path="" element={<Dashboard />} />
         </Route>
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   )

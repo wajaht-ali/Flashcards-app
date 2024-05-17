@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import { useAuth } from '../context/auth';
+import { FaGithub } from "react-icons/fa6";
 
 const Home = () => {
   const [auth, setAuth] = useAuth();
@@ -11,9 +12,11 @@ const Home = () => {
       <Layout>
         <div className="bg-gray-900 h-screen grid place-items-center">
           <section className="mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex lg:flex-col lg:items-start md:px-8">
-            <div className='text-xl'>
+
+            {auth?.token ? (<div className='text-xl'>
               <h2 className="text-blue-700">Welcome back: <span className="text-white font-semibold">{auth?.user?.name}</span></h2>
-            </div>
+            </div>) : (<></>)}
+
             <div className="space-y-4 py-4 flex-1 sm:text-center lg:text-left">
               <h1 className="text-white font-bold text-4xl xl:text-5xl">
                 One page Template for
@@ -23,17 +26,14 @@ const Home = () => {
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
               </p>
               <div className="pt-10 items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
-                <Link to="javascript:void(0)" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
+                <Link to="/dashboard" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
                   Get started
                 </Link>
-                <Link to="javascript:void(0)" className="px-5 mx-2 py-3 text-black duration-150 bg-white hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg">
-                  Try it out
+                <Link target='_blank' to="https://github.com/wajaht-ali/Flashcards-app" className="px-5 mx-2 py-3 text-black duration-150 bg-white flex items-center gap-2 hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg text-md">
+                  <FaGithub size={20}/>Star on GitHub
                 </Link>
               </div>
             </div>
-            {/* <div className="flex-1 text-center mt-7 lg:mt-0 lg:ml-3">
-              <img src="https://i.postimg.cc/HxHyt53c/undraw-heatmap-uyye.png" className="w-full mx-auto sm:w-10/12  lg:w-full" />
-            </div> */}
           </section>
         </div>
       </Layout>

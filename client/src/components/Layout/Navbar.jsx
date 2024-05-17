@@ -92,10 +92,10 @@ const Navbar = () => {
     const [state, setState] = useState(false)
     const [auth, setAuth] = useAuth();
     const navigation = [
-        { title: "Features", path: "javascript:void(0)" },
-        { title: "Integrations", path: "javascript:void(0)" },
-        { title: "Customers", path: "javascript:void(0)" },
-        { title: "Pricing", path: "javascript:void(0)" }
+        { title: "Create", path: "/dashboard" },
+        { title: "Notes", path: "/notes" },
+        { title: "About", path: "/about-us" },
+        { title: "Contact", path: "/contact-us" }
     ]
 
     return (
@@ -125,7 +125,7 @@ const Navbar = () => {
                         {
                             navigation.map((item, idx) => {
                                 return (
-                                    <li key={idx} className="text-white hover:text-indigo-600">
+                                    <li key={idx} className="text-white text-[16px] hover:text-indigo-600">
                                         <Link to={item.path} className="block">
                                             {item.title}
                                         </Link>
