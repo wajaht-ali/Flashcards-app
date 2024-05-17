@@ -10,8 +10,8 @@ const Home = () => {
     <div>
       <Layout>
         <div className="bg-gray-900 h-screen grid place-items-center">
-          <section className="mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex md:px-8">
-            <div>
+          <section className="mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex lg:flex-col lg:items-start md:px-8">
+            <div className='text-xl'>
               <h2 className="text-blue-700">Welcome back: <span className="text-white font-semibold">{auth?.user?.name}</span></h2>
             </div>
             <div className="space-y-4 py-4 flex-1 sm:text-center lg:text-left">

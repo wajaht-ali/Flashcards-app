@@ -5,8 +5,9 @@ import SignUP from "./components/pages/Auth/SignUp.jsx"
 import Login from "./components/pages/Auth/Login.jsx";
 import PrivateRoute from "../src/components/routes/ProtectedRoute.jsx";
 import Dashboard from "./components/pages/Admin/Dashboard.jsx";
-function App() {
 
+
+function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />

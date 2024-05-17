@@ -85,22 +85,10 @@ import logo from "../../assets/R__1_-removebg-preview.png";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser, } from "react-icons/fa";
 import { useAuth } from '../../context/auth';
+import Dropdown from '../Dropdown';
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const handleLogout = () => {
-        try {
-            setAuth({
-                ...auth,
-                user: null,
-                token: "",
-            });
-            localStorage.removeItem('auth');
-            navigate('/');
-        } catch (error) {
-            console.log(`Error with logging out ${error}`);
-        }
-    }
     const [state, setState] = useState(false)
     const [auth, setAuth] = useAuth();
     const navigation = [
@@ -151,9 +139,10 @@ const Navbar = () => {
                                 auth?.token ?
                                     (<ul>
                                         <li>
-                                            <Link onClick={handleLogout} className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
+                                            {/* <Link onClick={handleLogout} className="block py-3 text-center text-white hover:text-indigo-600 border rounded-lg md:border-none">
                                                 Logout
-                                            </Link>
+                                            </Link> */}
+                                            <Dropdown />
                                         </li>
                                     </ul>)
                                     :

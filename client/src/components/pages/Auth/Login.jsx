@@ -23,7 +23,7 @@ const Login = () => {
                     user: res.data.user,
                     token: res.data.token,
                 })
-                localStorage.setItem('auth', JSON.stringify(res.data));
+                localStorage.setItem('cardAuth', JSON.stringify(res.data));
                 navigate("/");
             }
             else {
