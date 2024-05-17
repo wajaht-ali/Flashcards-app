@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
       require: true,
     },
     role: {
-      type: Boolean,
+      type: Number,
       require: true,
       default: 0,
     },

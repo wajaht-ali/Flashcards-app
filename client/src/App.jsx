@@ -7,6 +7,8 @@ import PrivateRoute from "../src/components/routes/ProtectedRoute.jsx";
 import Dashboard from "./components/pages/Admin/Dashboard.jsx";
 import AdminRoute from "./components/routes/AdminRoute.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
+import Users from "./components/pages/Admin/Users.jsx";
+import UserDashboard from "./components/pages/User/UserDashboard.jsx";
 
 
 function App() {
@@ -19,12 +21,13 @@ function App() {
 
         {/* User Dashboard */}
         <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
+          <Route path="user" element={<UserDashboard />} />
         </Route>
 
         {/* Admin Dashboard */}
         <Route path="/dashboard" element={<AdminRoute />} >
-          <Route path="" element={<Dashboard />} />
+          <Route path="admin" element={<Dashboard />} />
+          <Route path="admin/all-users" element={<Users />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

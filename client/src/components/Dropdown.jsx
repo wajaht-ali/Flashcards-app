@@ -75,7 +75,7 @@ export default function Dropdown() {
 
                             <div className="flex items-center gap-3 px-4 py-3">
                                 <div className="relative aspect-square w-10 rounded-full">
-                                    {auth?.user?.gender === "male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
+                                    {auth?.user?.gender === "Male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
                                     <span className="absolute -right-0.5 -top-0.5 block h-3.5 w-3.5 rounded-full border-2 border-white bg-green"></span>
                                 </div>
                                 <div className="text-start">
@@ -89,7 +89,7 @@ export default function Dropdown() {
                             </div>
                             <div>
                                 <Link
-                                    to="/dashboard"
+                                    to={`/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`}
                                     className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-dark hover:bg-gray-50">
                                     View profile
                                 </Link>

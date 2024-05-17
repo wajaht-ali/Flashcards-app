@@ -29,7 +29,7 @@ const Home = () => {
                 <Link to="/dashboard" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
                   Get started
                 </Link>
-                <Link target='_blank' to="https://github.com/wajaht-ali/Flashcards-app" className="px-5 mx-2 py-3 text-black duration-150 bg-white flex items-center gap-2 hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg text-md">
+                <Link target='_blank' to="https://github.com/wajaht-ali/Flashcards-app" className="px-5 mx-2 py-3 text-black duration-150 bg-white flex items-center gap-2 hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg w-[200px] text-md">
                   <FaGithub size={20}/>Star on GitHub
                 </Link>
               </div>
