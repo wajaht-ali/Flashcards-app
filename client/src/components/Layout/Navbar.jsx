@@ -135,7 +135,7 @@ const Navbar = () => {
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                             {
-                                auth?.token ?
+                                auth.token ?
                                     (<ul>
                                         <li className="block text-center text-white">
                                             <Dropdown />

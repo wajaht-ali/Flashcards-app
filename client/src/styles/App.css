@@ -1618,6 +1618,10 @@ video {
     max-width: 28rem;
   }
 
+  .sm\:flex-row{
+    flex-direction: row;
+  }
+
   .sm\:space-x-6 > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
     margin-right: calc(1.5rem * var(--tw-space-x-reverse));

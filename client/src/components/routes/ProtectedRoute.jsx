@@ -11,8 +11,8 @@ export default function ProtectedRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.post("/api/v1/userAuth/user-auth");
-            if (res?.data?.ok) {
+            const res = await axios.get("/api/v1/userAuth/user-Auth");
+            if (res.data.ok) {
                 setOk(true);
             }
             else {
@@ -20,7 +20,7 @@ export default function ProtectedRoute() {
             }
         }
         if (auth?.token) authCheck();
-    }, [auth?.token])
+    }, [auth, auth?.token])
 
     return ok ? <Outlet /> : <Spinner />
 }
