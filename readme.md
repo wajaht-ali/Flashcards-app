@@ -12,6 +12,7 @@
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
+- [Note](#note)
 
 ## 📃 Introduction
 
@@ -133,3 +134,7 @@ If you have any questions or need help, feel free to reach out to me at contact.
 
 - Login page
   ![Login Page](./client/src/assets/card%20pics/login.png)
+
+
+## ⚠️ Note
+- This Application is still under development, some important features are still being developed and tested locally, once it's clear I'll push them asap.
