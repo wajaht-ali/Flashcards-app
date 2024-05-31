@@ -16,7 +16,7 @@ export const isAdmin = async (req, res, next) => {
     try {
         const id = req.user._id;
         const user = await UserModel.findById(id);
-        if(user.role) {
+        if(user.role === 1) {
             next();
         } 
         else {

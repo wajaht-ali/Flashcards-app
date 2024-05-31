@@ -60,7 +60,7 @@ export default function Dropdown() {
                         <button
                             ref={trigger}
                             onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className="mb-3.5 inline-flex items-center justify-center gap-2 rounded-lg border border-stroke  text-white px-6 py-2 text-base font-medium hover:bg-indigo-600 hover:text-white transition-all">
+                            className="mb-3.5 md:mb-0 inline-flex items-center justify-center gap-2 rounded-lg border border-stroke  text-white px-6 py-2 text-base font-medium hover:bg-indigo-600 hover:text-white transition-all">
                             Profile
                             <span
                                 className={`duration-100 ${dropdownOpen ? "-scale-y-100" : ""}`}>
