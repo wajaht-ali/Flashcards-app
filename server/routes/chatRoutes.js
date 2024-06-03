@@ -4,6 +4,6 @@ import { requireSignedIn } from "../middlewares/userMiddleware.js";
 
 const router = express.Router();
 
-router.post("/",requireSignedIn, chatController);
+router.post("/", requireSignedIn, chatController);
 
 export { router as chatRouter };
