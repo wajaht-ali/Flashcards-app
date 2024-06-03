@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import { userRouter } from "./routes/userRoutes.js";
 import { cardRouter } from "./routes/cardRoutes.js";
 import { subjectRouter } from "./routes/subjectRoutes.js";
+import { chatRouter } from "./routes/chatRoutes.js";
 
 //config env
 dotenv.config();
@@ -29,6 +30,7 @@ connectDB();
 app.use("/api/v1/userAuth", userRouter);
 app.use("/api/v1/subjects", subjectRouter);
 app.use("/api/v1/cards", cardRouter);
+app.use("/api/v1/chat", chatRouter);
 
 app.get("/", (req, res) => {
   res.send("Flash cards app is live now");

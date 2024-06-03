@@ -7,6 +7,7 @@ import {
   updateUserController,
 } from "../controllers/userControllers.js";
 import { requireSignedIn, isAdmin } from "../middlewares/userMiddleware.js";
+
 const router = express.Router();
 
 //create user
