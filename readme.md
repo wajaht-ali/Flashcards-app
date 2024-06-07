@@ -126,6 +126,9 @@ If you have any questions or need help, feel free to reach out to me at contact.
 
 ## 📷 Screenshots
 
+- ER Diagram
+  ![ERD](./client/src/assets/card%20pics/ERD.png)
+
 - Home Page
   ![Home Page](./client/src/assets/card%20pics/Home%20page.png)
 
