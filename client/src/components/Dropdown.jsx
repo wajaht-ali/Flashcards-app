@@ -53,7 +53,7 @@ export default function Dropdown() {
     });
 
     return (
-        <section className="bg-gray-2 py-10 text-black">
+        <section className="py-3 text-black">
             <div className="container">
                 <div className="flex justify-center">
                     <div className="relative inline-block">

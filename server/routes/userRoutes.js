@@ -26,7 +26,7 @@ router.put("/update-user/:id", requireSignedIn, updateUserController);
 router.delete("/delete-user/:id", deleteUserController);
 
 //user Auth
-router.get("/user-Auth", requireSignedIn, async (req, res) => {
+router.get("/user-Auth", requireSignedIn, (req, res) => {
   res.status(201).send({ ok: true });
 });
 

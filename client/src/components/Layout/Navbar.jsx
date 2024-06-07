@@ -100,12 +100,12 @@ const Navbar = () => {
     return (
         <nav className="bg-gray-900 border-b w-full md:static md:text-sm md:border-none">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-                <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                <div className="flex items-center justify-between md:block">
                     <Link to="/">
                         <img
                             src={logo}
                             width={120}
-                            height={50}
+                            height={40}
                             alt="Float UI logo"
                         />
                     </Link>

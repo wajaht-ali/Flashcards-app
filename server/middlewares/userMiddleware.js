@@ -8,7 +8,7 @@ export const requireSignedIn = async (req, res, next) => {
     req.user = decode;
     next();
   } catch (error) {
-    console.log(`Error with signi middleware ${error}`);
+    console.log(`Error with signin middleware ${error}`);
   }
 };
 
