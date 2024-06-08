@@ -9,6 +9,7 @@ import AdminRoute from "./components/routes/AdminRoute.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
 import Users from "./components/pages/Admin/Users.jsx";
 import UserDashboard from "./components/pages/User/UserDashboard.jsx";
+import Cards from "./components/pages/Admin/Cards.jsx";
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
         {/* Admin Dashboard */}
         <Route path="/dashboard" element={<AdminRoute />} >
           <Route path="admin" element={<Dashboard />} />
-          <Route path="admin/all-users" element={<Users />} />
+          <Route path="admin/cards" element={<Cards />} />
+          <Route path="admin/users" element={<Users />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

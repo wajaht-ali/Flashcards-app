@@ -14,12 +14,12 @@ const Dashboard = () => {
   }
   return (
     <Layout>
-      <div className="w-full flex flex-row items-center justify-between gap-2">
-        <div onClick={handleSidebar} className="h-full w-auto hover:rounded-full cursor-pointer hover:bg-gray-100 p-4"><FaBarsStaggered size={25} /></div>
+      <div className="w-full flex flex-row items-start justify-between gap-2">
+        <div onClick={handleSidebar} className="w-auto hover:rounded-full cursor-pointer hover:bg-gray-100 p-4"><FaBarsStaggered size={25} /></div>
         <div className={`sidebar ${sidebar ? 'active' : ''}`}>
           <Sidebar />
         </div>
-        <div className="w-full border border-gray-500 p-4">Div 2</div>
+        <div className="w-full shadow-sm shadow-gray-200 h-screen overflow-y-auto p-4">Div 2</div>
       </div>
     </Layout>
   )
