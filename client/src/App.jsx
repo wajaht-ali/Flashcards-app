@@ -4,7 +4,7 @@ import Home from "./components/Home.jsx"
 import SignUP from "./components/pages/Auth/SignUp.jsx"
 import Login from "./components/pages/Auth/Login.jsx";
 import PrivateRoute from "../src/components/routes/ProtectedRoute.jsx";
-import Dashboard from "./components/pages/Admin/Dashboard.jsx";
+import AdminDashboard from "./components/pages/Admin/Dashboard.jsx";
 import AdminRoute from "./components/routes/AdminRoute.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
 import Users from "./components/pages/Admin/Users.jsx";
@@ -27,7 +27,7 @@ function App() {
 
         {/* Admin Dashboard */}
         <Route path="/dashboard" element={<AdminRoute />} >
-          <Route path="admin" element={<Dashboard />} />
+          <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/cards" element={<Cards />} />
           <Route path="admin/users" element={<Users />} />
         </Route>

@@ -19,7 +19,11 @@ const Dashboard = () => {
         <div className={`sidebar ${sidebar ? 'active' : ''}`}>
           <Sidebar />
         </div>
-        <div className="w-full shadow-sm shadow-gray-200 h-screen overflow-y-auto p-4">Div 2</div>
+        <div className="w-full shadow-sm shadow-gray-200 h-screen overflow-y-auto p-4">
+          <div>
+            <h1>Welcome back, <span className="text-blue-700 font-semibold text-lg">Admin!</span></h1>
+          </div>
+        </div>
       </div>
     </Layout>
   )
