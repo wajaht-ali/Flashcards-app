@@ -1,14 +1,32 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 
+import { CgFileAdd } from "react-icons/cg";
+import { FiUser } from "react-icons/fi";
+import { ImStatsBars } from "react-icons/im";
+import { RiHome5Line } from "react-icons/ri";
+import { HiOutlineFolderAdd } from "react-icons/hi";
+
 const Sidebar = () => {
 
     return (
-        <nav className=" p-2 w-auto h-full border-r bg-white space-y-8">
+        <nav className=" p-3 w-auto h-full border-r bg-white space-y-8 rounded-xl shadow-lg">
             <div className="flex flex-col items-start justify-normal">
-                <Link className="w-full font-semibold py-2 px-2 hover:bg-gray-200 hover:rounded-md" to={"/dashboard/admin/"}>Home</Link>
-                <Link className="w-full font-semibold py-2 px-2 hover:bg-gray-200 hover:rounded-md" to={"/dashboard/admin/cards"}>Cards</Link>
-                <Link className="w-full font-semibold py-2 px-2 hover:bg-gray-200 hover:rounded-md" to={"/dashboard/admin/users"}>Users</Link>
+                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/"}>
+                    <div className="flex flex-row items-center gap-x-2"><RiHome5Line size={25} />Home</div>
+                </Link>
+                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/create-card"}>
+                    <div className="flex flex-row items-center gap-x-2"><CgFileAdd size={25} /> Cards</div>
+                </Link>
+                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/create-subject"}>
+                    <div className="flex flex-row items-center gap-x-2"><HiOutlineFolderAdd size={25} /> Subject</div>
+                </Link>
+                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/users"}>
+                    <div className="flex flex-row items-center gap-x-2"><FiUser size={25} />Users</div>
+                </Link>
+                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/statistics"}>
+                    <div className="flex flex-row items-center gap-x-2"><ImStatsBars size={25} />Statistics</div>
+                </Link>
             </div>
         </nav>
     );

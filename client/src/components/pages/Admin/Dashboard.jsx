@@ -37,19 +37,19 @@ const Dashboard = () => {
                 <p className="mt-10 text-lg">Create Card</p>
               </div>
             </Link>
-            <Link to={"/dashboard/admin/create-card"}>
+            <Link to={"/dashboard/admin/create-subject"}>
               <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
                 <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><CgFileAdd size={25} /></div>
                 <p className="mt-10 text-lg">Create Subject</p>
               </div>
             </Link>
-            <Link to={"/dashboard/admin/create-card"}>
+            <Link to={"/dashboard/admin/users"}>
               <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
                 <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><FiUsers size={25} /></div>
                 <p className="mt-10 text-lg">All Users</p>
               </div>
             </Link>
-            <Link to={"/dashboard/admin/create-card"}>
+            <Link to={"/dashboard/admin/statistics"}>
               <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
                 <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><ImStatsBars size={25} /></div>
                 <p className="mt-10 text-lg">Statistics</p>
