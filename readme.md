@@ -130,13 +130,19 @@ If you have any questions or need help, feel free to reach out to me at contact.
   ![ERD](./client/src/assets/card%20pics/ERD.png)
 
 - Home Page
-  ![Home Page](./client/src/assets/card%20pics/Home%20page.png)
+  ![Home Page](./client/src/assets/card%20pics/Home.png)
 
+- Admin Dashboard
+  ![Login Page](./client/src/assets/card%20pics/AdminDashboard.png)
+  
 - Sign Up page
-  ![Sign Page](./client/src/assets/card%20pics/Sign_up.png)
+  ![Sign Page](./client/src/assets/card%20pics/Signup.png)
 
 - Login page
-  ![Login Page](./client/src/assets/card%20pics/login.png)
+  ![Login Page](./client/src/assets/card%20pics/Login.png)
+
+- Create Card
+  ![Login Page](./client/src/assets/card%20pics/CardCreate.png)
 
 
 ## ⚠️ Note
