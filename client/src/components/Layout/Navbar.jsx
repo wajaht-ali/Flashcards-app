@@ -94,7 +94,8 @@ const Navbar = () => {
     const navigation = [
         { title: "Notes", path: "/notes" },
         { title: "About", path: "/about-us" },
-        { title: "Contact", path: "/contact-us" }
+        { title: "Contact", path: "/contact-us" },
+        { title: "Gemini", path: "/ask-gemini" }
     ]
 
     return (
