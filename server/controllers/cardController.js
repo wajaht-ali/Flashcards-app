@@ -3,9 +3,9 @@ import CardModel from "../models/cardModel.js";
 //create card
 export const createCardController = async (req, res) => {
   try {
-    const { name, status, description, subject, creator } = req.body;
+    const { title, status, content, subject, creator } = req.body;
     //validation
-    if (!name || !status || !description || !subject || !creator) {
+    if (!title || !status || !content || !subject || !creator) {
       return res.status(404).send({
         success: false,
         message: "All fields are required",
@@ -13,9 +13,9 @@ export const createCardController = async (req, res) => {
     }
     //create card
     const card = await new CardModel({
-      name,
+      title,
       status,
-      description,
+      content,
       subject,
       creator,
     }).save();

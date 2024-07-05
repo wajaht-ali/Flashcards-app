@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const CardSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       require: true,
     },
@@ -11,7 +11,7 @@ const CardSchema = new mongoose.Schema(
       require: true,
       default: "public",
     },
-    description: {
+    content: {
       type: String,
       require: true,
     },
@@ -21,8 +21,8 @@ const CardSchema = new mongoose.Schema(
       require: true,
     },
     subject: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "subjects",
+      type: String,
+      require: true,
     },
   },
   { timestamps: true }

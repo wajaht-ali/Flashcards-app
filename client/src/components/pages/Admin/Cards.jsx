@@ -4,6 +4,7 @@ import Layout from '../../Layout/Layout'
 import { useAuth } from '../../../context/auth'
 import { FaBarsStaggered } from "react-icons/fa6";
 import Sidebar from './Sidebar';
+import axios from 'axios';
 
 const Cards = () => {
     const [auth, setAuth] = useAuth();
@@ -17,15 +18,25 @@ const Cards = () => {
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
-
+    const creator = auth?.user?.id;
+    console.log(creator);
     const handleFormSubmit = async (e) => {
-        console.log(title, subject, status, content);
-        // try {
-        //     e.preventDefault();
-
-        // } catch (error) {
-        //     console.log(`Error with form submission ${error}`);
-        // }
+        try {
+            e.preventDefault();
+            const res = await axios.post("/api/v1/cards/create-card", {title, subject, status, content, creator});
+            if(res.data.success) {
+                setTitle("");
+                setSubject("");
+                setStatus("");
+                setContent("");
+                alert("Card created successfully!");
+            }
+            else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with form submission ${error}`);
+        }
     }
     return (
         <Layout>
@@ -53,11 +64,11 @@ const Cards = () => {
                                 <select id="countries"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     onChange={(e) => setSubject(e.target.value)}>
-                                    <option selected>Choose Category</option>
-                                    <option value="CS">Computer Science</option>
-                                    <option value="SE">Software Engineering</option>
-                                    <option value="AI">Artificial Intelligence</option>
-                                    <option value="TN">Telecom & Networking</option>
+                                    <option >Choose Category</option>
+                                    <option >Computer Science</option>
+                                    <option >Software Engineering</option>
+                                    <option >Artificial Intelligence</option>
+                                    <option >Telecom & Networking</option>
                                 </select>
 
                             </div>
