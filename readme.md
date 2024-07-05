@@ -133,8 +133,8 @@ If you have any questions or need help, feel free to reach out to me at contact.
   ![Home Page](./client/src/assets/card%20pics/Home.png)
 
 - Admin Dashboard
-  ![Login Page](./client/src/assets/card%20pics/AdminDashboard.png)
-  
+  ![Dashboard Page](./client/src/assets/card%20pics/AdminDashboard.png)
+
 - Sign Up page
   ![Sign Page](./client/src/assets/card%20pics/Signup.png)
 
@@ -142,7 +142,7 @@ If you have any questions or need help, feel free to reach out to me at contact.
   ![Login Page](./client/src/assets/card%20pics/Login.png)
 
 - Create Card
-  ![Login Page](./client/src/assets/card%20pics/CardCreate.png)
+  ![Create Card](./client/src/assets/card%20pics/CardCreate.png)
 
 
 ## ⚠️ Note

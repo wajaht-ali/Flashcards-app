@@ -9,7 +9,7 @@ const CardSchema = new mongoose.Schema(
     status: {
       type: String,
       require: true,
-      default: "private",
+      default: "public",
     },
     description: {
       type: String,
