@@ -7,6 +7,9 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         playfair: ["Playfair Display", "serif"],
       },
+      boxShadow: {
+        'custom': 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+      }
     },
   },
   plugins: [],

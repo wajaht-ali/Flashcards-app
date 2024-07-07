@@ -9,6 +9,7 @@ import { CgFileAdd } from "react-icons/cg";
 import { FiUsers } from "react-icons/fi";
 import { ImStatsBars } from "react-icons/im";
 import { Link } from 'react-router-dom';
+import { PiCards } from "react-icons/pi";
 
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
@@ -30,7 +31,7 @@ const Dashboard = () => {
             <p>What&apos;s your plan for today?</p>
           </div>
 
-          <div className="w-full flex flex-wrap items-center justify-around mt-20">
+          <div className="w-full flex flex-wrap items-center justify-around gap-y-4 mt-20">
             <Link to={"/dashboard/admin/create-card"}>
               <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
                 <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><FaPlus size={25} /></div>
@@ -53,6 +54,12 @@ const Dashboard = () => {
               <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
                 <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><ImStatsBars size={25} /></div>
                 <p className="mt-10 text-lg">Statistics</p>
+              </div>
+            </Link>
+            <Link to={"/dashboard/admin/all-cards"}>
+              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><PiCards size={25} /></div>
+                <p className="mt-10 text-lg">All Cards</p>
               </div>
             </Link>
           </div>

@@ -5,6 +5,7 @@ import { useAuth } from '../../../context/auth'
 import { FaBarsStaggered } from "react-icons/fa6";
 import Sidebar from './Sidebar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Cards = () => {
     const [auth, setAuth] = useAuth();
@@ -40,10 +41,10 @@ const Cards = () => {
     // input text validation
     const myText = useRef(null);
     const charResult = useRef(null);
-
+    const varLimit = 60;
+    // text area validation
     const myTextArea = useRef(null);
     const charTextResult = useRef(null);
-    const varLimit = 60;
     const textAreaLimit = 1000;
     useEffect(() => {
         charResult.current.textContent = 0 + "/" + varLimit;
@@ -85,11 +86,12 @@ const Cards = () => {
                 <div className={`sidebar ${sidebar ? 'active' : ''}`}>
                     <Sidebar />
                 </div>
-                <div className="w-full shadow-sm shadow-gray-200 h-auto overflow-y-auto p-4">
+                <div className="w-full shadow-sm shadow-gray-200 h-auto overflow-y-auto p-4 ">
                     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
 
-                    <div className="max-w-2xl mx-auto">
+                    <div className="max-w-2xl mx-auto shadow rounded-lg p-2 shadow-gray-300">
                         <h2 className="font-semibold text-xl md:text-2xl text-center my-3 text-indigo-700">Create a Card</h2>
+                        <p className="text-center font-light">If you require any info related to your topic, ask Gemini.</p>
                         <form onSubmit={handleFormSubmit}>
                             <div className="px-3 py-2 my-2">
 
@@ -98,7 +100,8 @@ const Cards = () => {
                                     className="input-text bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title of topic..."
                                     onChange={(e) => setTitle(e.target.value)}
                                     maxLength={60}
-                                    ref={myText} />
+                                    ref={myText}
+                                    value={title} />
                                 <p className="result text-end my-2 text-[14px] font-light"
                                     ref={charResult} ></p>
                             </div>
@@ -107,7 +110,7 @@ const Cards = () => {
                                 <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Category</label>
                                 <select id="countries"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    onChange={(e) => setSubject(e.target.value)}>
+                                    onChange={(e) => setSubject(e.target.value)} value={subject}>
                                     <option >Choose Category</option>
                                     <option >Computer Science</option>
                                     <option >Software Engineering</option>
@@ -161,12 +164,18 @@ const Cards = () => {
                                     placeholder="Write your thoughts here..."
                                     onChange={(e) => setContent(e.target.value)}
                                     ref={myTextArea}
-                                    maxLength={1000}></textarea>
+                                    maxLength={1000} value={content}></textarea>
                                 <p className="text-limit-info text-end my-2 text-[14px] font-light"
                                     ref={charTextResult}></p>
                             </div>
                             <button onClick={handleFormSubmit} type="button" className=" mx-3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Submit</button>
                         </form>
+                        <div className='my-4'>
+                            <p className='pl-4 my-2'>Facing touble, gemini is here to help out.</p>
+                            <button className='mt-2'>
+                                <Link to={"/ask-gemini"} className="mx-3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Ask Gemini!</Link>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div >

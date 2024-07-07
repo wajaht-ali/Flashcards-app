@@ -10,6 +10,7 @@ import PageNotFound from "./components/PageNotFound.jsx";
 import Users from "./components/pages/Admin/Users.jsx";
 import UserDashboard from "./components/pages/User/UserDashboard.jsx";
 import Cards from "./components/pages/Admin/Cards.jsx";
+import Gemini from "./components/Gemini.jsx";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignUP />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/ask-gemini" element={<Gemini />} />
 
         {/* User Dashboard */}
         <Route path="/dashboard" element={<PrivateRoute />}>
