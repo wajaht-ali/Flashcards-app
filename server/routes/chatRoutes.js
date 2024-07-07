@@ -8,7 +8,7 @@ import { requireSignedIn } from "../middlewares/userMiddleware.js";
 const router = express.Router();
 
 //generate a prompt
-router.post("/", requireSignedIn, chatController);
+router.post("/ask-gemini", requireSignedIn, chatController);
 
 //delete the prompt
 router.delete("/delete-chat/:id", deleteChaController);
