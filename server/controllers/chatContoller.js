@@ -31,6 +31,31 @@ export const chatController = async (req, res) => {
   }
 };
 
+//get all chats
+export const getPromptsController = async (req, res) => {
+  try {
+    const output = await PromptModel.find().select("_id title");
+    if(output) {
+      res.status(201).send({
+        success: true,
+        message: "Data fetched successfully!",
+        output
+      })
+    } else {
+      return res.status(404).send({
+        success: false,
+        message: "Error with fetching prompts",
+      })
+    }
+  } catch (error) {
+    console.log(`Error with finding prompts: ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with fetching prompts",
+    })
+  }
+}
+
 //delete the text
 export const deleteChaController = async (req, res) => {
   try {

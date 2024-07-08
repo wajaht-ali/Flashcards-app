@@ -1,37 +1,42 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
-
-import { CgFileAdd } from "react-icons/cg";
-import { ImStatsBars } from "react-icons/im";
-import { RiHome5Line } from "react-icons/ri";
-import { HiOutlineFolderAdd } from "react-icons/hi";
-import { PiCards } from "react-icons/pi";
-import { FiUsers } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Sidebar = () => {
-
+    const [result, setResult] = useState([]);
+    const fetchData = async () => {
+        try {
+            const res = await axios.get("/api/v1/chat/get-prompts");
+            if (res.data.success) {
+                setResult(res.data.output);
+            }
+            else {
+                alert("Error with prompts fetching!");
+            }
+        } catch (error) {
+            console.log(`Error with fetching prompts: ${error}`);
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
     return (
         <nav className="p-2 w-auto h-full border-r bg-white space-y-8 rounded-xl shadow-lg">
             <div className="flex flex-col items-start justify-normal">
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/"}>
-                    <div className="flex flex-row items-center gap-x-2"><RiHome5Line size={25} />Home</div>
-                </Link>
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/create-card"}>
-                    <div className="flex flex-row items-center gap-x-2"><CgFileAdd size={25} />Create Card</div>
-                </Link>
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/all-cards"}>
-                    <div className="flex flex-row items-center gap-x-2"><PiCards size={25} />All Cards</div>
-                </Link>
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/create-subject"}>
-                    <div className="flex flex-row items-center gap-x-2"><HiOutlineFolderAdd size={25} /> Subject</div>
-                </Link>
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/users"}>
-                    <div className="flex flex-row items-center gap-x-2"><FiUsers size={25} />Users</div>
-                </Link>
-                <Link className="w-full font-semibold py-4 px-2 hover:bg-gray-200 hover:text-blue-700 hover:rounded-md border-b border-b-gray-300" to={"/dashboard/admin/statistics"}>
-                    <div className="flex flex-row items-center gap-x-2"><ImStatsBars size={25} />Statistics</div>
-                </Link>
-                
+                {
+                    result.map((item, index) => {
+                        return (
+                            <Link to={`/chat/c/${item._id}`} key={index} className="flex flex-col">
+                                <div className="flex flex-col items-start justify-center w-full h-12 px-4
+                                bg-gray-100 rounded-xl text-gray-600 hover:bg-gray-200 hover:text-gray-
+                                700 transition-all duration-300 ease-in-out cursor-pointer">
+                                    <p className="text-sm font-semibold">{item.title}</p>
+                                </div>
+                            </Link>
+                        )
+                    })
+                }
             </div>
         </nav>
     );
