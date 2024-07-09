@@ -219,3 +219,30 @@ export const deleteUserController = async (req, res) => {
     });
   }
 };
+
+//get all users
+export const getUsersController = async (req, res) => {
+  try {
+    const users = await UserModel.find().select("-password -updatedAt");
+    if(users) {
+      res.status(200).send({
+        success: true,
+        message: "All users fetched successfully!",
+        users,
+      });
+    }
+    else {
+      res.status(404).send({
+        success: false,
+        message: "No users found!",
+      });
+    }
+  } catch (error) {
+    console.log(`Errro with sending users data ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error with sending users data",
+      error,
+    });
+  }
+}

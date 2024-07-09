@@ -835,6 +835,10 @@ video {
   height: 200px;
 }
 
+.h-\[50vh\]{
+  height: 50vh;
+}
+
 .h-\[80vh\]{
   height: 80vh;
 }
@@ -849,10 +853,6 @@ video {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-12{
-  height: 3rem;
 }
 
 .min-h-screen{
@@ -1053,6 +1053,10 @@ video {
        column-gap: 1.5rem;
 }
 
+.gap-y-2{
+  row-gap: 0.5rem;
+}
+
 .gap-y-4{
   row-gap: 1rem;
 }
@@ -1116,6 +1120,10 @@ video {
 
 .whitespace-nowrap{
   white-space: nowrap;
+}
+
+.rounded{
+  border-radius: 0.25rem;
 }
 
 .rounded-2xl{
@@ -1245,6 +1253,11 @@ video {
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
+.bg-gray-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .bg-gray-200{
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
@@ -1278,11 +1291,6 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r{
@@ -1611,6 +1619,11 @@ video {
   color: rgb(67 56 202 / var(--tw-text-opacity));
 }
 
+.text-red-500{
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1694,11 +1707,11 @@ video {
 
 .sidebar {
   position: absolute;
-  top: 150px;
+  top: 120px;
   left: -250px;
   /* Hidden by default */
   width: 250px;
-  height: 100%;
+  height: 80%;
   transition: transform 0.3s ease-in-out;
   /* Transition effect */
 }
@@ -1779,6 +1792,11 @@ video {
 .hover\:bg-indigo-700:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(67 56 202 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gradient-to-br:hover{
@@ -1898,6 +1916,11 @@ video {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.group:hover .group-hover\:text-red-700{
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .has-\[\:checked\]\:border-blue-500:has(:checked){
@@ -2087,6 +2110,11 @@ video {
   .md\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .md\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .md\:text-sm{

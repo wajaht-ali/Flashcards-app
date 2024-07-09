@@ -3,6 +3,7 @@ import {
   createUserController,
   deleteUserController,
   forgotPasswordController,
+  getUsersController,
   loginUserController,
   updateUserController,
 } from "../controllers/userControllers.js";
@@ -34,4 +35,7 @@ router.get("/user-Auth", requireSignedIn, (req, res) => {
 router.get("/admin-auth", requireSignedIn, isAdmin, (req, res) => {
   res.status(201).send({ ok: true });
 });
+
+//get all users
+router.get("/get-all-users", getUsersController);
 export { router as userRouter };

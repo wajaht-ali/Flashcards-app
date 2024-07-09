@@ -10,6 +10,7 @@ import { FaRegCopy } from "react-icons/fa6";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { BsStars } from "react-icons/bs";
 
 const Gemini = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -57,22 +58,25 @@ const Gemini = () => {
 
                     <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
                         {result ? (
-                            <div className="md:w-[800px] shadow-custom rounded-md p-2 overflow-y-scroll">
+                            <div className="md:w-[800px] h-full shadow-custom rounded-md p-2 overflow-y-scroll">
                                 <p className='text-center font-semibold text-lg'>Here is your Result!</p>
                                 <p><MarkDown>{result}</MarkDown></p>
-                                <div className='w-[100px] m-2 bg-gray-300 p-2 rounded-lg flex flex-row items-center justify-center gap-x-3 cursor-pointer'>
-                                    <FaRegCopy onClick={() => handleCopyText(result)} />
-                                    <abbr title="Copy and create card">
-                                        <MdOutlineLibraryAdd onClick={() => handleCopyNavigation(result)} />
+                                <div className='w-[100px] m-2 bg-gray-100 p-2 rounded flex flex-row items-center justify-center gap-x-3 cursor-pointer'>
+                                    <abbr title="Copy text">
+                                        <FaRegCopy className="hover:text-blue-700" onClick={() => handleCopyText(result)} />
+                                    </abbr>
+                                    <abbr title="Copy text and create card">
+                                        <MdOutlineLibraryAdd className="hover:text-blue-700" onClick={() => handleCopyNavigation(result)} />
                                     </abbr>
                                 </div>
                             </div>
                         ) : <div className="m-auto rounded-md flex flex-col items-center justify-center p-2">
-                            <h1 className="text-blue-700 text-2xl md:text-4xl font-semibold text-center">Ask Google Gemini Anything!</h1>
-                            <span className="inline-flex m-auto">
-                            <AiOutlineSafetyCertificate className="m-auto" />
+                            <BsStars size={30} className="text-blue-700 my-2" />
+                            <h1 className="text-blue-700 my-2 text-2xl md:text-4xl font-semibold text-center">Ask Google Gemini Anything!</h1>
+                            <span className="inline-flex m-auto my">
+                                <AiOutlineSafetyCertificate className="m-auto" />
                                 <p className="inline ml-2">Trusted by millions of users.</p>
-                                </span>
+                            </span>
                         </div>
                         }
                         <form onSubmit={handleFormSubmit} className='sm:w-full md:w-[800px]'>

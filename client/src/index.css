@@ -6,10 +6,10 @@
 
 .sidebar {
     position: absolute;
-    top: 150px;
+    top: 120px;
     left: -250px; /* Hidden by default */
     width: 250px;
-    height: 100%;
+    height: 80%;
     transition: transform 0.3s ease-in-out; /* Transition effect */
   }
   

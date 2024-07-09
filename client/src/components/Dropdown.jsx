@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useAuth } from "../context/auth";
-import { FcBusinesswoman } from "react-icons/fc";
-import { FcBusinessman } from "react-icons/fc";
+import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 
 export default function Dropdown() {
     const [auth, setAuth] = useAuth();
