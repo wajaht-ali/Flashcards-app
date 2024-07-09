@@ -50,7 +50,17 @@ const Users = () => {
                                                 <th
                                                     scope="col"
                                                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    S.No
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                     Name
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Sport Name
                                                 </th>
                                                 <th
                                                     scope="col"
@@ -63,12 +73,13 @@ const Users = () => {
                                             </tr>
                                         </thead>
                                         <tbody className="bg-white divide-y divide-gray-200">
-                                            {users.map((person) => (
+                                            {users.map((person, index) => (
                                                 <tr key={person.email}>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index+1}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
                                                             <div className="flex-shrink-0 h-10 w-10">
-                                                            {person.role === "Male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
+                                                            {person.gender === "Male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
                                                             </div>
                                                             <div className="ml-4">
                                                                 <div className="text-sm font-medium text-gray-900">{person.name}</div>
@@ -76,10 +87,14 @@ const Users = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.answer}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role === 1 ? <>Admin</> : <>User</>}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        <Link to={"#"} className="text-indigo-600 hover:text-indigo-900">
-                                                            Edit
+                                                        <Link to={"#"} className="bg-blue-600 px-2 py-1 text-white mx-1 rounded">
+                                                            Update
+                                                        </Link>
+                                                        <Link to={"#"} className="bg-red-600 px-2 py-1 text-white mx-1 rounded">
+                                                            Delete
                                                         </Link>
                                                     </td>
                                                 </tr>

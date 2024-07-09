@@ -11,7 +11,7 @@ const Navbar = () => {
     const [state, setState] = useState(false)
     const [auth, setAuth] = useAuth();
     const navigation = [
-        { title: "Notes", path: "/notes" },
+        { title: "Cards", path: "/cards" },
         { title: "About", path: "/about-us" },
         { title: "Contact", path: "/contact-us" },
         { title: "Gemini", path: "/ask-gemini" }
