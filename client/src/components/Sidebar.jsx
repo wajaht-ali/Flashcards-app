@@ -23,7 +23,7 @@ const Sidebar = () => {
     }
     useEffect(() => {
         fetchData();
-    }, [result])
+    }, [])
     const handleDelete = async (e, id) => {
         e.preventDefault();
         try {
@@ -56,7 +56,7 @@ const Sidebar = () => {
                                 <div className="flex flex-row items-center justify-between w-full h-10 px-4
                                 bg-gray-200 text-gray-600 hover:bg-gray-100 hover:text-gray-
                                 700 transition-all duration-300 ease-in-out rounded-md cursor-pointer">
-                                    <p className="text-sm font-semibold">{index + 1}. {item.title.substring(0, 20)}...</p>
+                                    <p className="text-sm font-semibold">{index + 1}. {item.title.substring(0, 16)}...</p>
                                     <button onClick={(event) => handleDelete(event, item._id)} className="hover:bg-white group rounded-full p-2">
                                         <FiTrash2 className="text-red-500 text-sm peer group-hover:text-red-700" />
                                     </button>

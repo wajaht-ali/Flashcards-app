@@ -72,7 +72,7 @@ const Gemini = () => {
                             </div>
                         ) : <div className="m-auto rounded-md flex flex-col items-center justify-center p-2">
                             <BsStars size={30} className="text-blue-700 my-2" />
-                            <h1 className="text-blue-700 my-2 text-2xl md:text-4xl font-semibold text-center">Ask Google Gemini Anything!</h1>
+                            <h1 className="text-blue-700 my-2 text-2xl md:text-4xl font-semibold text-center">Chat History Component is under construction.</h1>
                             <span className="inline-flex m-auto my">
                                 <AiOutlineSafetyCertificate className="m-auto" />
                                 <p className="inline ml-2">Trusted by millions of users.</p>

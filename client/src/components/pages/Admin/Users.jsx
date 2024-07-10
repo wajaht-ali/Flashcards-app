@@ -19,7 +19,7 @@ const Users = () => {
     const fetchUserData = async () => {
         try {
             const res = await axios.get("/api/v1/userAuth/get-all-users");
-            if(res.data.success) {
+            if (res.data.success) {
                 setUsers(res.data.users);
             }
             else {
@@ -32,6 +32,27 @@ const Users = () => {
     useEffect(() => {
         fetchUserData();
     }, [users])
+
+    const handleDelete = async (id) => {
+        try {
+            const ans = prompt("Do you really want to delete this user?");
+            if (ans === "YES" || ans === "yes") {
+                const res = await axios.delete(`/api/v1/userAuth/delete-user/${id}`);
+                if (res.data.success) {
+                    fetchUserData();
+                    alert("User deleted successfully!");
+                }
+                else {
+                    alert(res.data.message);
+                }
+            }
+            else {
+                alert("Please type 'YES' or 'yes' to delete, Retry!");
+            }
+        } catch (error) {
+            console.log(`Error with deleting user ${error}`);
+        }
+    }
     return (
         <Layout>
             <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -60,6 +81,11 @@ const Users = () => {
                                                 <th
                                                     scope="col"
                                                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Member Since
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                     Sport Name
                                                 </th>
                                                 <th
@@ -75,11 +101,11 @@ const Users = () => {
                                         <tbody className="bg-white divide-y divide-gray-200">
                                             {users.map((person, index) => (
                                                 <tr key={person.email}>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index+1}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
                                                             <div className="flex-shrink-0 h-10 w-10">
-                                                            {person.gender === "Male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
+                                                                {person.gender === "Male" ? <FcBusinessman size={30} /> : <FcBusinesswoman size={30} />}
                                                             </div>
                                                             <div className="ml-4">
                                                                 <div className="text-sm font-medium text-gray-900">{person.name}</div>
@@ -87,15 +113,16 @@ const Users = () => {
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.createdAt.toLocalDateString()}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.answer}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role === 1 ? <>Admin</> : <>User</>}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        <Link to={"#"} className="bg-blue-600 px-2 py-1 text-white mx-1 rounded">
+                                                        <Link to={`/dashboard/admin/users/update-user/${person._id}`} className="bg-blue-600 px-2 py-1 text-white mx-1 rounded">
                                                             Update
                                                         </Link>
-                                                        <Link to={"#"} className="bg-red-600 px-2 py-1 text-white mx-1 rounded">
+                                                        <button onClick={() => handleDelete(person._id)} className="bg-red-600 px-2 py-1 text-white mx-1 rounded">
                                                             Delete
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             ))}
