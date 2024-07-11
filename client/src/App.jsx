@@ -9,10 +9,11 @@ import AdminRoute from "./components/routes/AdminRoute.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
 import Users from "./components/pages/Admin/Users.jsx";
 import UserDashboard from "./components/pages/User/UserDashboard.jsx";
-import Cards from "./components/pages/Admin/Cards.jsx";
 import Gemini from "./components/Gemini.jsx";
 import UpdateUser from "./components/pages/Admin/UpdateUser.jsx";
 import ChatHistory from "./components/ChatHistory.jsx";
+import CreateCard from "./components/pages/Admin/CreateCards.jsx";
+import CreateSubject from "./components/pages/Admin/CreateSubject.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignUP />} />
         <Route path="/login" element={<Login />} />
+
         <Route path="/ask-gemini" element={<Gemini />} />
         <Route path="/chat/c/:id" element={<ChatHistory />} />
 
@@ -32,7 +34,8 @@ function App() {
         {/* Admin Dashboard */}
         <Route path="/dashboard" element={<AdminRoute />} >
           <Route path="admin" element={<AdminDashboard />} />
-          <Route path="admin/create-card" element={<Cards />} />
+          <Route path="admin/create-card" element={<CreateCard />} />
+          <Route path="admin/create-subject" element={<CreateSubject />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/users/update-user/:id" element={<UpdateUser />} />
         </Route>

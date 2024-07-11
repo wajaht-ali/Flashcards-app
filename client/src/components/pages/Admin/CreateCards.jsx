@@ -7,7 +7,7 @@ import Sidebar from './Sidebar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Cards = () => {
+const CreateCard = () => {
     const [auth, setAuth] = useAuth();
     const [sidebar, setSidebar] = useState(false);
     // card states
@@ -15,6 +15,7 @@ const Cards = () => {
     const [subject, setSubject] = useState("");
     const [status, setStatus] = useState("");
     const [content, setContent] = useState("");
+    const [subjData, setSubjData] = useState([]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -38,6 +39,22 @@ const Cards = () => {
             console.log(`Error with form submission ${error}`);
         }
     }
+    const fetchSubjectsData = async () => {
+        try {
+            const res = await axios.get("/api/v1/subjects/get-all-subjects");
+            if (res.data.success) {
+                setSubjData(res.data.output);
+            }
+            else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with subject data ${error}`)
+        }
+    }
+    useEffect(() => {
+        fetchSubjectsData();
+    }, [])
     // input text validation
     const myText = useRef(null);
     const charResult = useRef(null);
@@ -111,11 +128,11 @@ const Cards = () => {
                                 <select id="countries"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     onChange={(e) => setSubject(e.target.value)} value={subject}>
-                                    <option >Choose Category</option>
-                                    <option >Computer Science</option>
-                                    <option >Software Engineering</option>
-                                    <option >Artificial Intelligence</option>
-                                    <option >Telecom & Networking</option>
+                                    {
+                                        subjData.map((item, index) => (
+                                            <option key={index}>{item.name}</option>
+                                        ))
+                                    }
                                 </select>
 
                             </div>
@@ -183,4 +200,4 @@ const Cards = () => {
     )
 }
 
-export default Cards
+export default CreateCard

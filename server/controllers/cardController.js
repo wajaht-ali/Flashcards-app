@@ -1,4 +1,5 @@
 import CardModel from "../models/cardModel.js";
+import SubjectModel from "../models/subjectModel.js";
 
 //create card
 export const createCardController = async (req, res) => {
@@ -11,12 +12,14 @@ export const createCardController = async (req, res) => {
         message: "All fields are required",
       });
     }
+    // find subject
+    const subjectExist = await SubjectModel.findOne({name: subject});
     //create card
     const card = await new CardModel({
       title,
       status,
       content,
-      subject,
+      subject: subjectExist._id,
       creator,
     }).save();
 

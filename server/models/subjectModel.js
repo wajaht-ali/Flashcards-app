@@ -5,7 +5,7 @@ const SubjectSchema = new mongoose.Schema(
     name: {
       type: String,
       require: true,
-      default: "CS",
+      default: "Computer Science",
     },
   },
   { timestamps: true }

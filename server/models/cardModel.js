@@ -21,7 +21,8 @@ const CardSchema = new mongoose.Schema(
       require: true,
     },
     subject: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subjects",
       require: true,
     },
   },

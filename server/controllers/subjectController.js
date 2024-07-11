@@ -27,6 +27,26 @@ export const createSubjectController = async (req, res) => {
     });
   }
 };
+
+//get all subjects 
+export const getAllSubjectsController = async (req, res) => {
+  try {
+    const output = await SubjectModel.find();
+    return res.status(201).send({
+      success: true,
+      message: "Subjects fetched sucessfully!",
+      output,
+    });
+  } catch (error) {
+    console.log(`Error with get all subjects ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with get all subjects",
+      error,
+    });
+  }
+};
+
 //delete subject
 export const deleteSubjectController = async (req, res) => {
   try {
