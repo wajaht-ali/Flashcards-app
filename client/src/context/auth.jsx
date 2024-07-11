@@ -22,6 +22,7 @@ const AuthProvider = ({ children }) => {
                     user: parseData.user,
                     token: parseData.token
                 });
+                // console.log(parseData);
                 axios.defaults.headers.common['Authorization'] = parseData.token;
             }
         };

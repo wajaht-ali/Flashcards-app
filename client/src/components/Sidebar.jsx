@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -6,13 +7,13 @@ import { FiTrash2 } from "react-icons/fi";
 import { FcDeleteDatabase } from "react-icons/fc";
 
 const Sidebar = () => {
-    const [result, setResult] = useState([]);
+    const [output, setOutput] = useState([]);
     const fetchData = async () => {
         try {
             const res = await axios.get("/api/v1/chat/get-prompts");
             if (res.data.success) {
                 // console.log(res.data);
-                setResult(res.data.output);
+                setOutput(res.data.output);
             }
             else {
                 alert("Error with prompts fetching!");
@@ -24,6 +25,7 @@ const Sidebar = () => {
     useEffect(() => {
         fetchData();
     }, [])
+
     const handleDelete = async (e, id) => {
         e.preventDefault();
         try {
@@ -44,13 +46,13 @@ const Sidebar = () => {
             <div className="flex flex-col items-start justify-normal h-full overflow-y-scroll">
                 <h1 className="text-lg md:text-2xl my-2 font-bold">Chats History</h1>
                 {
-                    result.length === 0 ?  
+                    output.length === 0 ?  
                     <div className="h-full w-full flex flex-col items-center justify-center gap-y-2">
                         <FcDeleteDatabase size={30} />
                         <p className="text-sm md:text-lg">No chats found!</p> 
                     </div>
                     :
-                    result.map((item, index) => {
+                    output.map((item, index) => {
                         return (
                             <Link to={`/chat/c/${item._id}`} key={index} className="flex flex-col items-center w-full py-1">
                                 <div className="flex flex-row items-center justify-between w-full h-10 px-4

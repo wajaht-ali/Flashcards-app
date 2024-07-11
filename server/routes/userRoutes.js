@@ -3,6 +3,7 @@ import {
   createUserController,
   deleteUserController,
   forgotPasswordController,
+  getUserByIdController,
   getUsersController,
   loginUserController,
   updateUserController,
@@ -24,7 +25,7 @@ router.put("/forgot-password", forgotPasswordController);
 router.put("/update-user/:id", requireSignedIn, updateUserController);
 
 //delete user
-router.delete("/delete-user/:id", deleteUserController);
+router.delete("/delete-user/:id",requireSignedIn, isAdmin, deleteUserController);
 
 //user Auth
 router.get("/user-Auth", requireSignedIn, (req, res) => {
@@ -37,5 +38,9 @@ router.get("/admin-auth", requireSignedIn, isAdmin, (req, res) => {
 });
 
 //get all users
-router.get("/get-all-users", getUsersController);
+router.get("/get-all-users", requireSignedIn, isAdmin, getUsersController);
+
+// get user by id
+router.get("/get-user/:id", requireSignedIn, isAdmin, getUserByIdController);
+
 export { router as userRouter };

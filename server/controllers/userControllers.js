@@ -83,7 +83,7 @@ export const loginUserController = async (req, res) => {
 
     //token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "5d",
+      expiresIn: "7d",
     });
 
     res.status(201).send({
@@ -165,18 +165,19 @@ export const forgotPasswordController = async (req, res) => {
 //update user
 export const updateUserController = async (req, res) => {
   try {
+    const { id } = req.params;
     const { name, email, gender, answer, password } = req.body;
 
     //validation
-    if (!name || !email || !password || !gender || !answer) {
-      return res
-        .status(400)
-        .send({ message: "Please provide all required fields." });
-    }
-    const user = await UserModel.findById(req.user._id);
+    // if (!name || !email || !password || !gender || !answer) {
+    //   return res
+    //     .status(400)
+    //     .send({ message: "Please provide all required fields." });
+    // }
+    const user = await UserModel.findById(id);
     const hashedPassword = await hashedPasswordFtn(password);
     const updateUser = await UserModel.findByIdAndUpdate(
-      req.user._id,
+      id,
       {
         name: name || user.name,
         email: email || user.email,
@@ -189,7 +190,7 @@ export const updateUserController = async (req, res) => {
     if (!updateUser) {
       return res.status(404).send({ message: "User not found." });
     }
-    // await updateUser.save();
+    
     res.status(201).send({
       success: true,
       message: "User updated sucessfully!",
@@ -224,14 +225,13 @@ export const deleteUserController = async (req, res) => {
 export const getUsersController = async (req, res) => {
   try {
     const users = await UserModel.find().select("-password -updatedAt");
-    if(users) {
+    if (users) {
       res.status(200).send({
         success: true,
         message: "All users fetched successfully!",
         users,
       });
-    }
-    else {
+    } else {
       res.status(404).send({
         success: false,
         message: "No users found!",
@@ -245,4 +245,31 @@ export const getUsersController = async (req, res) => {
       error,
     });
   }
-}
+};
+
+// get user by id
+export const getUserByIdController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await UserModel.findById(id);
+    if (user) {
+      res.status(200).send({
+        success: true,
+        message: "User fetched successfully!",
+        user,
+      });
+    } else {
+      res.status(404).send({
+        success: false,
+        message: "No user found",
+      });
+    }
+  } catch (error) {
+    console.log(`Error with fetching user by id ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error with fetching user by id",
+      error,
+    });
+  }
+};

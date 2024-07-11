@@ -3,10 +3,10 @@ import UserModel from "../models/userModel.js";
 
 export const requireSignedIn = async (req, res, next) => {
   try {
-    const token = req.headers.authorization;
+    const token = await req.headers.authorization;
     const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = decode;
-    next();
+    await next();
   } catch (error) {
     console.log(`Error with signin middleware ${error}`);
   }

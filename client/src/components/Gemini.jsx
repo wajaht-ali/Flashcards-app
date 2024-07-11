@@ -18,7 +18,6 @@ const Gemini = () => {
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState("");
     const navigate = useNavigate();
-
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
@@ -95,4 +94,4 @@ const Gemini = () => {
     )
 }
 
-export default Gemini
+export default Gemini;

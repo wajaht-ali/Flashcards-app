@@ -9,7 +9,6 @@ import axios from 'axios';
 import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 
 const Users = () => {
-    const [auth, setAuth] = useAuth();
     const [sidebar, setSidebar] = useState(false);
     const [users, setUsers] = useState([]);
 
@@ -31,7 +30,7 @@ const Users = () => {
     }
     useEffect(() => {
         fetchUserData();
-    }, [users])
+    }, [])
 
     const handleDelete = async (id) => {
         try {
@@ -113,7 +112,7 @@ const Users = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.createdAt.toLocalDateString()}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12/01/2024</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.answer}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role === 1 ? <>Admin</> : <>User</>}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
