@@ -17,6 +17,7 @@ const Gemini = () => {
     // card states
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState("");
+    const [sideData, setSideData] = useState(false);
     const navigate = useNavigate();
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -36,6 +37,7 @@ const Gemini = () => {
             const res = await axios.post("/api/v1/chat/ask-gemini", { prompt });
             if (res.data.success) {
                 setPrompt("");
+                setSideData(true);
                 setResult(res.data.text);
             }
             else {
@@ -50,7 +52,7 @@ const Gemini = () => {
             <div className="w-full flex flex-row items-start justify-between gap-2">
                 <div onClick={handleSidebar} className="w-auto hover:rounded-full cursor-pointer hover:bg-gray-100 p-2"><FaBarsStaggered size={20} /></div>
                 <div className={`sidebar ${sidebar ? 'active' : ''}`}>
-                    <Sidebar />
+                    <Sidebar info={sideData} />
                 </div>
                 <div className="w-full h-auto overflow-y-auto px-3 p-2 md:p-4 ">
                     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />

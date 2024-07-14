@@ -37,6 +37,26 @@ export const createCardController = async (req, res) => {
     });
   }
 };
+
+//get all cards
+export const getAllCardsController = async (req, res) => {
+  try {
+    const output = await CardModel.find();
+    res.status(201).send({
+      success: true,
+      message: "All cards fetched sucessfully!",
+      output,
+    });
+  } catch (error) {
+    console.log(`Error with get all cards ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with fetching all cards",
+      error,
+    });
+  }
+};
+
 //update card
 export const updateCardController = async (req, res) => {
   try {
@@ -82,6 +102,7 @@ export const updateCardController = async (req, res) => {
     });
   }
 };
+
 //delete card
 export const deleteCardController = async (req, res) => {
   try {

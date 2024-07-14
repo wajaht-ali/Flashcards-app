@@ -6,7 +6,7 @@ import axios from "axios";
 import { FiTrash2 } from "react-icons/fi";
 import { FcDeleteDatabase } from "react-icons/fc";
 
-const Sidebar = () => {
+const Sidebar = ({info}) => {
     const [output, setOutput] = useState([]);
     const fetchData = async () => {
         try {
@@ -24,7 +24,7 @@ const Sidebar = () => {
     }
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [info])
 
     const handleDelete = async (e, id) => {
         e.preventDefault();

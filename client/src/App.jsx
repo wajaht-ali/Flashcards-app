@@ -14,6 +14,7 @@ import UpdateUser from "./components/pages/Admin/UpdateUser.jsx";
 import ChatHistory from "./components/ChatHistory.jsx";
 import CreateCard from "./components/pages/Admin/CreateCards.jsx";
 import CreateSubject from "./components/pages/Admin/CreateSubject.jsx";
+import AllCards from "./components/AllCards.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
         <Route path="/ask-gemini" element={<Gemini />} />
         <Route path="/chat/c/:id" element={<ChatHistory />} />
+        
 
         {/* User Dashboard */}
         <Route path="/dashboard" element={<PrivateRoute />}>
@@ -38,6 +40,7 @@ function App() {
           <Route path="admin/create-subject" element={<CreateSubject />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/users/update-user/:id" element={<UpdateUser />} />
+          <Route path="admin/all-cards" element={<AllCards />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />
