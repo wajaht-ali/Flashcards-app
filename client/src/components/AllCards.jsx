@@ -5,6 +5,7 @@ import { BiNotepad } from "react-icons/bi";
 import axios from 'axios';
 import { FcCalendar } from "react-icons/fc";
 import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
+import { Link } from 'react-router-dom';
 
 const AllCards = () => {
     const [cards, setCards] = useState([]);
@@ -77,23 +78,26 @@ const AllCards = () => {
                             {
                                 cardDataArray.map((items, index) => {
                                     return (
-                                        <div key={index} className="rounded-xl bg-white p-3 text-center shadow-xl">
-                                            <div
-                                                className="mx-auto flex h-16 w-16 -translate-y-8 transform items-center justify-center rounded-full bg-blue-400 shadow-lg shadow-teal-500/40 text-white">
-                                                <BiNotepad size={25} />
+                                        <Link to={"/cards"} key={index}>
+                                            <div className="rounded-xl bg-white p-3 text-center mx-4 md:mx-0 shadow-xl h-[200px] md:h-[250px]">
+                                                <div
+                                                    className="mx-auto flex h-16 w-16 -translate-y-8 transform items-center justify-center rounded-full bg-blue-400 shadow-lg shadow-teal-500/40 text-white">
+                                                    <BiNotepad size={25} />
+                                                </div>
+                                                <h2 className="text-darken text-start mb-3 text-lg font-medium lg:px-6">{items.title}</h2>
+                                                <div className="flex flex-row items-center justify-around gap-x-2 my-2">
+                                                    <span className="flex flex-row items-center gap-x-2">
+                                                        <FcCalendar />
+                                                        <p className="text-start text-[10px]">{items.createdAt}</p>
+                                                    </span>
+                                                    <span className="flex flex-row items-center gap-x-2">
+                                                        {items.creator.gender === "Male" ? <FcBusinessman size={20} /> : <FcBusinesswoman size={20} />}
+                                                        <p className="text-start text-[10px]">{items.creator.name}</p>
+                                                    </span>
+                                                </div>
+                                                <p className="mt-3 text-sm text-start text-gray-400">{items.content.substring(0, 80)}</p>
                                             </div>
-                                            <h1 className="text-darken mb-3 text-lg font-medium lg:px-12">{items.title}</h1>
-                                            <div className="flex flex-row items-center justify-around gap-x-2 my-2">
-                                                <span className="flex flex-row items-center gap-x-2">
-                                                    <FcCalendar />
-                                                    <p className="text-start text-sm">{items.createdAt}</p>
-                                                </span>
-                                                <span className="flex flex-row items-center gap-x-2">
-                                                    {items.creator.gender === "Male" ? <FcBusinessman size={20} /> : <FcBusinesswoman size={20} />}
-                                                    <p className="text-start text-sm">{items.creator.name}</p>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        </Link>
                                     )
                                 })
                             }
