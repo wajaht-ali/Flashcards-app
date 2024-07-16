@@ -57,6 +57,26 @@ export const getAllCardsController = async (req, res) => {
   }
 };
 
+//get card by id
+export const getSingleCardController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const card = await CardModel.findById(id);
+    res.status(201).send({
+      success: true,
+      message: "Card fetched sucessfully!",
+      card,
+    });
+  } catch (error) {
+    console.log(`Error with get single card ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with fetching single card",
+      error,
+    });
+  }
+};
+
 //update card
 export const updateCardController = async (req, res) => {
   try {

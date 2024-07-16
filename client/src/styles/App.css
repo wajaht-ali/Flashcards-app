@@ -654,6 +654,11 @@ video {
   margin-right: 0.75rem;
 }
 
+.mx-4{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -672,11 +677,6 @@ video {
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.mx-4{
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .mb-2{
@@ -727,6 +727,10 @@ video {
   margin-top: 5rem;
 }
 
+.mt-3{
+  margin-top: 0.75rem;
+}
+
 .mt-4{
   margin-top: 1rem;
 }
@@ -737,10 +741,6 @@ video {
 
 .mt-8{
   margin-top: 2rem;
-}
-
-.mt-3{
-  margin-top: 0.75rem;
 }
 
 .block{
@@ -826,18 +826,6 @@ video {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-\[800px\]{
-  height: 800px;
-}
-
-.h-\[300px\]{
-  height: 300px;
-}
-
-.h-\[250px\]{
-  height: 250px;
 }
 
 .min-h-screen{
@@ -1438,6 +1426,10 @@ video {
   line-height: 2.5rem;
 }
 
+.text-\[10px\]{
+  font-size: 10px;
+}
+
 .text-\[14px\]{
   font-size: 14px;
 }
@@ -1473,10 +1465,6 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[10px\]{
-  font-size: 10px;
 }
 
 .font-bold{
@@ -1535,6 +1523,11 @@ video {
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
+.text-gray-400{
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
 .text-gray-500{
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1585,17 +1578,8 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-gray-400{
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
-}
-
 .underline{
   text-decoration-line: underline;
-}
-
-.opacity-5{
-  opacity: 0.05;
 }
 
 .shadow{
@@ -1957,14 +1941,14 @@ video {
     position: static;
   }
 
-  .md\:my-0{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
   .md\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .md\:my-0{
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .md\:mb-0{
@@ -2111,19 +2095,14 @@ video {
     align-items: flex-start;
   }
 
-  .lg\:px-12{
-    padding-left: 3rem;
-    padding-right: 3rem;
+  .lg\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .lg\:px-6{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   .lg\:text-left{
