@@ -47,6 +47,33 @@ export const getAllSubjectsController = async (req, res) => {
   }
 };
 
+// get subject by id
+export const getSubjectByIdController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!id) {
+      res.status(400).send({
+        success: false,
+        message: "No subject ID provided",
+      });
+      return;
+    }
+    const subject = await SubjectModel.findById(id);
+    return res.status(201).send({
+      success: true,
+      message: "Subject fetched sucessfully!",
+      subject,
+    });
+  } catch (error) {
+    console.log(`Error with get subject by id ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with get subject by id",
+      error,
+    });
+  }
+};
+
 //delete subject
 export const deleteSubjectController = async (req, res) => {
   try {

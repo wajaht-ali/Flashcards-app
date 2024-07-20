@@ -6,6 +6,7 @@ import { FcCalendar } from "react-icons/fc";
 import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
+import SearchInput from "../../SearchInput.jsx";
 
 const AllCards = () => {
     const [cards, setCards] = useState([]);
@@ -73,7 +74,9 @@ const AllCards = () => {
             <div className="w-full flex flex-row items-start justify-between gap-2">
                 <div className="w-full h-auto overflow-y-auto px-3 p-2 md:p-4 ">
                     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
-
+                    <div className="w-auto my-2 flex items-center justify-center">
+                        <SearchInput />
+                    </div>
                     <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
                         <div className="mt-4 grid gap-14 md:grid-cols-4 md:gap-5">
                             {

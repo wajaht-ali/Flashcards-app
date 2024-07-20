@@ -6,6 +6,7 @@ import {
   getSingleCardController,
   updateCardController,
 } from "../controllers/cardController.js";
+import { requireSignedIn } from "../middlewares/userMiddleware.js";
 const router = express.Router();
 
 //create card

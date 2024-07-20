@@ -7,7 +7,9 @@ import { useParams } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 
 const CardInfo = () => {
-    const [cardInfo, setCardInfo] = useState([]);
+    const [cardInfo, setCardInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({})
+    const [subjectInfo, setSubjectInfo] = useState({})
     const { id } = useParams();
 
     const fetchCardInfo = async (id) => {
@@ -23,11 +25,57 @@ const CardInfo = () => {
             console.log(`Error with fetching cards data ${error}`)
         }
     }
-
+    const fetchUser = async (id) => {
+        try {
+            const res = await axios.get(`/api/v1/userAuth/get-user/${id}`);
+            if (res.data.success) {
+                console.log(res.data);
+                setUserInfo(res.data.user);
+            } else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with fetching user data ${error}`)
+        }
+    }
+    const fetchSubject = async (id) => {
+        try {
+            const res = await axios.get(`/api/v1/subjects/get-subject/${id}`);
+            if (res.data.success) {
+                console.log(res.data);
+                setSubjectInfo(res.data.subject);
+            } else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with fetching subject data ${error}`)
+        }
+    }
 
     useEffect(() => {
         fetchCardInfo(id);
     }, [id])
+    const userId = cardInfo.creator;
+    const subjId = cardInfo.subject;
+    console.log(userId)
+    // console.log(subjId)
+    useEffect(() => {
+        if(userId) {
+            fetchUser(userId);
+            fetchSubject(subjId);
+        }
+    }, [userId, subjId])
+
+    const cardDataArray = cardInfo.map((card) => {
+        const createdAtDate = new Date(card.createdAt);
+        const formattedDate = createdAtDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        return formattedDate;
+    });
+
     return (
         <Layout>
             <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -38,8 +86,9 @@ const CardInfo = () => {
                         <div className="h-full w-full flex-col items-center p-3">
                             <p>{cardInfo.title}</p>
                             <p>{cardInfo.status}</p>
-                            <p>{cardInfo.creator}</p>
-                            <p>{cardInfo.content}</p>
+                            <p>{cardDataArray.createdAt}</p>
+                            <p>{userInfo.name}</p>
+                            <p>{subjectInfo.name}</p>
                         </div>
                     </div>
                 </div>

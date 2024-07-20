@@ -250,8 +250,7 @@ export const getUsersController = async (req, res) => {
 // get user by id
 export const getUserByIdController = async (req, res) => {
   try {
-    console.log(req.params); // Log the request parameters to see what's being passed
-    const id = req.params._id;
+    const {id} = req.params;
     if (!id) {
       res.status(400).send({
         success: false,

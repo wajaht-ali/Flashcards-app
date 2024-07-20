@@ -38,9 +38,9 @@ router.get("/admin-auth", requireSignedIn, isAdmin, (req, res) => {
 });
 
 //get all users
-router.get("/get-all-users", requireSignedIn, isAdmin, getUsersController);
+router.get("/get-all-users", getUsersController);
 
 // get user by id
-router.get("/get-user/:id", requireSignedIn, isAdmin, getUserByIdController);
+router.get("/get-user/:id", requireSignedIn, getUserByIdController);
 
 export { router as userRouter };
