@@ -4,6 +4,7 @@ import {
   deleteCardController,
   getAllCardsController,
   getSingleCardController,
+  searchCardsController,
   updateCardController,
 } from "../controllers/cardController.js";
 import { requireSignedIn } from "../middlewares/userMiddleware.js";
@@ -22,4 +23,7 @@ router.delete("/delete-card/:id", deleteCardController);
 
 //update card
 router.put("/update-card/:id", updateCardController);
+
+//search cards 
+router.post("/search-cards", searchCardsController);
 export { router as cardRouter };

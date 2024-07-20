@@ -13,7 +13,7 @@ export const createCardController = async (req, res) => {
       });
     }
     // find subject
-    const subjectExist = await SubjectModel.findOne({name: subject});
+    const subjectExist = await SubjectModel.findOne({ name: subject });
     //create card
     const card = await new CardModel({
       title,
@@ -138,6 +138,28 @@ export const deleteCardController = async (req, res) => {
     res.status(404).send({
       success: false,
       message: "Error with delete card",
+      error,
+    });
+  }
+};
+
+//search cards controller
+export const searchCardsController = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const cards = await CardModel.find({
+      $text: { $search: query },
+    });
+    res.status(201).send({
+      success: true,
+      message: "Cards fetched sucessfully!",
+      cards,
+    });
+  } catch (error) {
+    console.log(`Error with search cards ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with search cards",
       error,
     });
   }

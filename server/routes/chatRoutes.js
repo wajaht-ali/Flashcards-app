@@ -16,4 +16,5 @@ router.get("/get-prompts", getPromptsController);
 
 //delete the prompt
 router.delete("/delete-chat/:id", deleteChaController);
+
 export { router as chatRouter };
