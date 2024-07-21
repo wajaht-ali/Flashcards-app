@@ -17,6 +17,7 @@ import CreateSubject from "./components/pages/Admin/CreateSubject.jsx";
 import AllCards from "./components/AllCards.jsx";
 import Cards from "./components/pages/Home/Cards.jsx";
 import CardInfo from "./components/pages/Home/CardInfo.jsx";
+import Search from "./components/pages/Home/Search.jsx";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <Route path="/chat/c/:id" element={<ChatHistory />} />
         <Route path="/all-cards" element={<Cards />} />
         <Route path="/all-cards/card/:id" element={<CardInfo />} />
-
+        <Route path={"/search"} element={<Search />} />
         {/* User Dashboard */}
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />

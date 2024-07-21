@@ -10,10 +10,8 @@ const SearchInput = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(values.keyword)
             const res = await axios.get(`/api/v1/cards/search/${values.keyword}`);
-            console.log(res);
-            setValues({ ...values, results: res.data.queryResult });
+            setValues({ ...values, results: res.data });
             navigate("/search");
         } catch (error) {
             console.log(`Error with search input ${error}`);

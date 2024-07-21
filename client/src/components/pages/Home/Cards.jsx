@@ -74,7 +74,7 @@ const AllCards = () => {
             <div className="w-full flex flex-row items-start justify-between gap-2">
                 <div className="w-full h-auto overflow-y-auto px-3 p-2 md:p-4 ">
                     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
-                    <div className="w-auto my-2 flex items-center justify-center">
+                    <div className="w-auto my-4 flex items-center justify-center">
                         <SearchInput />
                     </div>
                     <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
