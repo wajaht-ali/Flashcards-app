@@ -146,18 +146,26 @@ export const deleteCardController = async (req, res) => {
 //search cards controller
 export const searchCardsController = async (req, res) => {
   try {
-    const { query } = req.query;
-    const cards = await CardModel.find({
-      $text: { $search: query },
+    const { keyword } = req.params;
+    console.log(`Keyword received: ${keyword}`);
+
+    const queryResult = await CardModel.find({
+      $or: [
+        { title: { $regex: keyword, $options: "i" } },
+        { content: { $regex: keyword, $options: "i" } },
+      ],
     });
-    res.status(201).send({
-      success: true,
-      message: "Cards fetched sucessfully!",
-      cards,
-    });
+
+    console.log(`Query Result: ${JSON.stringify(queryResult)}`);
+
+    if (queryResult.length === 0) {
+      console.log("No matching documents found");
+    }
+
+    res.json(queryResult);
   } catch (error) {
-    console.log(`Error with search cards ${error}`);
-    res.status(404).send({
+    console.log(`Error with search cards: ${error}`);
+    res.status(500).send({
       success: false,
       message: "Error with search cards",
       error,

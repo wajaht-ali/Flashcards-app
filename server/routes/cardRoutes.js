@@ -7,7 +7,6 @@ import {
   searchCardsController,
   updateCardController,
 } from "../controllers/cardController.js";
-import { requireSignedIn } from "../middlewares/userMiddleware.js";
 const router = express.Router();
 
 //create card
@@ -25,5 +24,7 @@ router.delete("/delete-card/:id", deleteCardController);
 router.put("/update-card/:id", updateCardController);
 
 //search cards 
-router.post("/search-cards", searchCardsController);
+router.get("/search/:keyword", searchCardsController);
+
+
 export { router as cardRouter };
