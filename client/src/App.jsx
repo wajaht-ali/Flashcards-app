@@ -18,6 +18,7 @@ import AllCards from "./components/AllCards.jsx";
 import Cards from "./components/pages/Home/Cards.jsx";
 import CardInfo from "./components/pages/Home/CardInfo.jsx";
 import Search from "./components/pages/Home/Search.jsx";
+import Statistics from "./components/pages/Admin/Statistics.jsx";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/all-cards" element={<Cards />} />
         <Route path="/all-cards/card/:id" element={<CardInfo />} />
         <Route path={"/search"} element={<Search />} />
+        
         {/* User Dashboard */}
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />
@@ -45,6 +47,7 @@ function App() {
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/users/update-user/:id" element={<UpdateUser />} />
           <Route path="admin/all-cards" element={<AllCards />} />
+          <Route path="admin/statistics" element={<Statistics />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

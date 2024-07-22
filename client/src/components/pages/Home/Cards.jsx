@@ -77,8 +77,8 @@ const AllCards = () => {
                     <div className="w-auto my-4 flex items-center justify-center">
                         <SearchInput />
                     </div>
-                    <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
-                        <div className="mt-4 grid gap-14 md:grid-cols-4 md:gap-5">
+                    <div className="h-auto mx-auto md:p-2 flex flex-col items-center justify-between">
+                        <div className="mt-4 grid gap-14 md:grid-cols-4 md:gap-5 md:my-3">
                             {
                                 cardDataArray.map((items, index) => {
                                     return (
