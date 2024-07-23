@@ -147,16 +147,12 @@ export const deleteCardController = async (req, res) => {
 export const searchCardsController = async (req, res) => {
   try {
     const { keyword } = req.params;
-    console.log(`Keyword received: ${keyword}`);
-
     const queryResult = await CardModel.find({
       $or: [
         { title: { $regex: keyword, $options: "i" } },
         { content: { $regex: keyword, $options: "i" } },
       ],
     });
-
-    console.log(`Query Result: ${JSON.stringify(queryResult)}`);
 
     if (queryResult.length === 0) {
       console.log("No matching documents found");

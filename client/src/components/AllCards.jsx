@@ -6,6 +6,7 @@ import axios from 'axios';
 import { FcCalendar } from "react-icons/fc";
 import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 import { Link } from 'react-router-dom';
+import SearchInput from './SearchInput';
 
 const AllCards = () => {
     const [cards, setCards] = useState([]);
@@ -72,16 +73,18 @@ const AllCards = () => {
             <div className="w-full flex flex-row items-start justify-between gap-2">
                 <div className="w-full h-auto overflow-y-auto px-3 p-2 md:p-4 ">
                     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
-
-                    <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
-                        <div className="mt-4 grid gap-14 md:grid-cols-4 md:gap-5">
+                    <div className="w-auto my-4 flex items-center justify-center">
+                        <SearchInput />
+                    </div>
+                    <div className="h-auto mx-auto md:p-2 flex flex-col items-center justify-between">
+                        <div className="mt-4 grid gap-14 md:grid-cols-4 md:gap-5 md:my-3">
                             {
                                 cardDataArray.map((items, index) => {
                                     return (
-                                        <Link to={"/cards"} key={index}>
-                                            <div className="rounded-xl bg-white p-3 text-center mx-4 md:mx-0 shadow-xl h-[200px] md:h-[250px]">
+                                        <Link to={`/all-cards/card/${items.id}`} key={index}>
+                                            <div className="rounded-xl bg-white p-3 text-center mx-4 md:mx-0 shadow-xl h-[200px] md:h-[250px] my-4">
                                                 <div
-                                                    className="mx-auto flex h-16 w-16 -translate-y-8 transform items-center justify-center rounded-full bg-blue-400 shadow-lg shadow-teal-500/40 text-white">
+                                                    className="mx-auto flex h-12 w-12 -translate-y-8 transform items-center justify-center rounded-full bg-blue-400 shadow-lg shadow-teal-500/40 text-white">
                                                     <BiNotepad size={25} />
                                                 </div>
                                                 <h2 className="text-darken text-start mb-3 text-lg font-medium lg:px-6">{items.title}</h2>
@@ -105,7 +108,7 @@ const AllCards = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }
 

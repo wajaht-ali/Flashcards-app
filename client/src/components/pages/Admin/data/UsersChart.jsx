@@ -1,9 +1,11 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LabelList } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LabelList, CartesianGrid, ResponsiveContainer } from 'recharts';
 
+let usersCount = 0;
 const UsersChart = () => {
   const [usersData, setUsersData] = useState([]);
   const sampleUsers = [
@@ -68,30 +70,35 @@ const UsersChart = () => {
       </text>
     );
   };
-
+  usersCount = usersData.length;
   return (
-    <div className="w-full shadow-sm shadow-gray-200 overflow-y-auto p-4 -z-10">
-      <BarChart
-        width={700}
-        height={300}
-        data={chartData}
-        margin={{ top: 5, right: 20, bottom: 30, left: 40 }}
-      >
-        <XAxis
-          dataKey="name"
-          tickLine={true}
-          label={{ position: "bottom" }}
-          tickFormatter={(value) => value} // Display the full value from "name"
-        />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="count" fill="#8884d8" barSize={30}>
-          <LabelList dataKey="count" content={UserCountLabel} />
-        </Bar>
-      </BarChart>
+    <div className="w-full overflow-x-auto p-4 -z-10">
+        <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+                data={chartData}
+                margin={{ top: 5, right: 10, bottom: 30, left: 5 }}
+            >
+                <XAxis
+                    dataKey="name"
+                    angle={45}
+                    tickLine={true}
+                    label={{ position: "bottom" }}
+                    tickFormatter={(value) => value}
+                    textAnchor="end"
+                    dy={50}
+                    dx={30}
+                />
+                <CartesianGrid strokeDasharray="3 3" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="count" fill="#8884d8" barSize={50}>
+                    <LabelList dataKey="count" content={UserCountLabel} />
+                </Bar>
+            </BarChart>
+        </ResponsiveContainer>
     </div>
-  );
+);
 };
 
 export default UsersChart;

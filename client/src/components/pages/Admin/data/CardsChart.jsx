@@ -1,107 +1,120 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
-import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-const data = [
-    {
-        _id: '668fd1d6ffcf20495260693d',
-        title: 'Wajahat Ali - The Boss',
-        status: 'Public',
-        content: "Hii I'm Wajahat Ali. The Boss",
-        creator: '66471a04f1d77d665342958a',
-        subject: '668fca978feb9a334207df35',
-        createdAt: '2024-07-11T12:36:38.161Z',
-        updatedAt: '2024-07-11T12:36:38.161Z',
-        __v: 0,
-    },
-    {
-        _id: '669517e2deb78d8ef93e3a67',
-        title: 'Arrays in computer science',
-        status: 'Private',
-        content: 'de, deserunt voluptatum doloribus sint voluptate ...',
-        creator: '66471a04f1d77d665342958a',
-        subject: '668fca978feb9a334207df35',
-        createdAt: '2024-07-15T14:28:38.161Z',
-        updatedAt: '2024-07-15T14:28:38.161Z',
-        __v: 0,
-    },
-];
+let cardsCount, subjectCount = 0;
+const CardsChart = () => {
+    const [cardsData, setCardsData] = useState([]);
+    const [subjData, setSubjData] = useState([]);
 
-// Group data by subject
-const subjects = {};
-const statusCount = { Public: 0, Private: 0 };
-
-data.forEach(card => {
-    if (!subjects[card.subject]) {
-        subjects[card.subject] = 0;
-    }
-    subjects[card.subject]++;
-    statusCount[card.status]++;
-});
-
-const barChartData = Object.keys(subjects).map(subject => ({
-    subject,
-    count: subjects[subject],
-}));
-
-const pieChartData = [
-    { name: 'Public', value: statusCount.Public },
-    { name: 'Private', value: statusCount.Private },
-];
-
-const COLORS = ['#0088FE', '#00C49F'];
-
-const CardsVisualization = () => {
-    const [subjects, setSubjects] = useState([]);
-    // subjects
-    const fetchSubjectsData = async () => {
+    const fetchCardsData = async () => {
         try {
-            const res = await axios.get("/api/v1/subjects/get-all-subjects");
-
+            const res = await axios.get("/api/v1/cards/all-cards");
             if (res.data.success) {
-                setSubjects(res.data.output);
-            }
-            else {
+                setCardsData(res.data.output);
+            } else {
                 alert(res.data.message);
             }
         } catch (error) {
-            console.log(`Error with fetching users data ${error}`);
+            console.log(`Error with cards ${error}`)
         }
     }
-    
-    return (
-        <div>
-            <h2>Cards per Subject</h2>
-            <BarChart width={600} height={300} data={barChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="subject" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="count" fill="#8884d8" />
-            </BarChart>
+    const fetchSubjData = async () => {
+        try {
+            const res = await axios.get("/api/v1/subjects/get-all-subjects");
+            if (res.data.success) {
+                setSubjData(res.data.output);
+            } else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with subject ${error}`)
+        }
+    }
 
-            <h2>Cards Status Distribution</h2>
-            <PieChart width={400} height={400}>
-                <Pie
-                    data={pieChartData}
-                    cx={200}
-                    cy={200}
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                >
-                    {pieChartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                </Pie>
-                <Tooltip />
-            </PieChart>
+    useEffect(() => {
+        fetchCardsData();
+    }, [])
+
+    useEffect(() => {
+        fetchSubjData();
+    }, [])
+
+    const cardsDataArray = cardsData.map((item) => {
+        const subjArray = item.subject ? subjData.find((subj) => subj._id === item.subject) : null;
+        return {
+            title: item.title,
+            id: item._id,
+            content: item.content,
+            status: item.status,
+            subject: {
+                name: subjArray ? subjArray.name : 'Unknown'
+            },
+        }
+    })
+
+    const subjectCounts = cardsDataArray.reduce((acc, card) => {
+        const subjectName = card.subject.name;
+        if (!acc[subjectName]) {
+            acc[subjectName] = 0;
+        }
+        acc[subjectName]++;
+        return acc;
+    }, {});
+
+    const chartData = Object.keys(subjectCounts).map((subject) => ({
+        name: subject,
+        count: subjectCounts[subject],
+    }));
+
+    // Colors for the pie chart
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    cardsCount = cardsData.length;
+    subjectCount = subjData.length;
+
+    return (
+        <div className="w-full flex flex-col items-center justify-center">
+            <ResponsiveContainer width="100%" height={300}>
+                <BarChart
+                    className="text-[10px]"
+                    width={600}
+                    height={400}
+                    data={chartData}
+                    margin={{
+                        top: 5, right: 30, left: 10, bottom: 50,
+                    }} 
+                    barSize={50}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" angle={45} textAnchor="end" dx={80} dy={80} />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="count" fill="#8884d8"/>
+                </BarChart>
+            </ResponsiveContainer>
+            <h2 className="text-blue-600 text-2xl my-4">Cards Percentage Per Subject</h2>
+            <ResponsiveContainer width="100%" height={300}>
+                <PieChart width={600} height={400} className="text-[12px md:text[16px]" >
+                    <Pie
+                        data={chartData}
+                        cx={300}
+                        cy={200}
+                        labelLine={false}
+                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={60}
+                        fill="#8884d8"
+                        dataKey="count" >
+                        {chartData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                </PieChart>
+            </ResponsiveContainer>
         </div>
     )
 }
 
-export default CardsVisualization;
+export default CardsChart;
