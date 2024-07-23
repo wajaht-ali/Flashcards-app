@@ -52,6 +52,24 @@ const Users = () => {
             console.log(`Error with deleting user ${error}`);
         }
     }
+    const userDataArray = users.map((item) => {
+        const createdAtDate = new Date(item.createdAt);
+        const formattedDate = createdAtDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric'
+        });
+        return {
+            _id: item._id,
+            name: item.name,
+            email: item.email,
+            role: item.role,
+            gender: item.gender,
+            sportName: item.answer,
+            createdAt: formattedDate
+        }
+    })
+    console.log(userDataArray)
     return (
         <Layout>
             <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -98,8 +116,8 @@ const Users = () => {
                                             </tr>
                                         </thead>
                                         <tbody className="bg-white divide-y divide-gray-200">
-                                            {users.map((person, index) => (
-                                                <tr key={person.email}>
+                                            {userDataArray.map((person, index) => (
+                                                <tr key={person._id}>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
@@ -112,8 +130,8 @@ const Users = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12/01/2024</td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.answer}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.createdAt}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.sportName}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role === 1 ? <>Admin</> : <>User</>}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                                         <Link to={`/dashboard/admin/users/update-user/${person._id}`} className="bg-blue-600 px-2 py-1 text-white mx-1 rounded">

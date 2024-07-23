@@ -81,7 +81,7 @@ const Footer = () => {
                             <img src={logo} className="w-32" />
                         </Link>
                         <p className="leading-relaxed mt-2 text-[15px] font-normal">
-                            Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                        Smart learning through interactive digital flashcard experience!
                         </p>
                     </div>
                     <form

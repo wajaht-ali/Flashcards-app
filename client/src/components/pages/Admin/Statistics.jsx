@@ -7,12 +7,14 @@ import Sidebar from './Sidebar';
 import axios from 'axios';
 import UsersChart from './data/UsersChart.jsx';
 import CardsChart from './data/CardsChart.jsx';
+import PromptsChart from './data/PromptsChart.jsx';
 
 const Statistics = () => {
     const [sidebar, setSidebar] = useState(false);
     const [usersData, setUsersData] = useState([]);
     const [cardsData, setCardsData] = useState([]);
     const [subjData, setSubjData] = useState([]);
+    const [prompts, setPrompts] = useState([]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -53,11 +55,25 @@ const Statistics = () => {
             console.log(`Error with subject ${error}`)
         }
     }
+    const fetchGeminiData = async () => {
+        try {
+            const res = await axios.get("/api/v1/chat/get-prompts");
+            console.log(res.data.output);
+            if (res.data.success) {
+                setPrompts(res.data.output);
+            } else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with prompts ${error}`)
+        }
+    }
 
     useEffect(() => {
         fetchCardsData();
         fetchUserData();
         fetchSubjData();
+        fetchGeminiData();
     }, [])
     let publicCard = 0, privateCard = 0;
     const filterCardsData = cardsData.reduce((acc, item) => {
@@ -68,18 +84,6 @@ const Statistics = () => {
         }
         return acc;
     }, { publicCard: 0, privateCard: 0 });
-    // const filterCardsData = cardsData.map((item) => {
-    //     if (item.status === "Private") {
-    //         privateCard++;
-    //     }
-    //     else {
-    //         publicCard++;
-    //     }
-    //     return {
-    //         public: publicCard,
-    //         private: privateCard
-    //     }
-    // })
 
     return (
         <Layout>
@@ -109,9 +113,9 @@ const Statistics = () => {
                             <p className="text-2xl">{subjData.length}</p>
                         </div>
 
-                        <div className="bg-[#FF8042] text-center text-white font-semibold text-xl h-[160px] w-[300px] rounded-[4px] flex flex-col items-start md:items-center justify-center gap-2">
-                            <h1 className="text-2xl font-semibold">Users</h1>
-                            <p className="text-2xl">{usersData.length}</p>
+                        <div className="bg-[#FF8042] text-center text-white font-semibold text-xl h-[160px] w-[300px] rounded-[4px] flex flex-col items-center justify-center gap-2">
+                            <h1 className="text-2xl font-semibold">Total Gemini Chats</h1>
+                            <p className="text-2xl">{prompts.length}</p>
                         </div>
 
                     </div>
@@ -123,6 +127,10 @@ const Statistics = () => {
                         <div className="w-full md:w-[50%]">
                             <h2 className="text-blue-600 text-2xl my-4">Card Distribution Per Subject: </h2>
                             <CardsChart />
+                        </div>
+                        <div className="w-full md:w-[50%]">
+                            <h2 className="text-blue-600 text-2xl my-4">Gemini Usage Per Month: </h2>
+                            <PromptsChart />
                         </div>
 
                     </div>

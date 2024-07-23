@@ -60,9 +60,9 @@ const UsersChart = () => {
     const { x, y, value } = props;
     return (
       <text
-        x={x + (20 / 2)} // Adjust x position for centering
-        y={y - 10} // Adjust y position for placement above the bar
-        dy={4} // Adjust text baseline
+        x={x + (20 / 2)}
+        y={y - 10} 
+        dy={4} 
         textAnchor="middle"
         fill="#000"
       >

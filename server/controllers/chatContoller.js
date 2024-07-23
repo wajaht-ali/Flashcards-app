@@ -34,7 +34,7 @@ export const chatController = async (req, res) => {
 //get all chats
 export const getPromptsController = async (req, res) => {
   try {
-    const output = await PromptModel.find().select("_id title");
+    const output = await PromptModel.find().select("_id title createdAt updatedAt");
     if(output) {
       res.status(201).send({
         success: true,

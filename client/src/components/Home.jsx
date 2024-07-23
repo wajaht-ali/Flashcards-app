@@ -26,7 +26,7 @@ const Home = () => {
               Discover smart learning through our interactive digital flashcards, enhanced by <span className="text-indigo-400 underline"> Google Gemini</span> for dynamic and engaging text generation.
               </p>
               <div className="pt-5 flex flex-row items-center justify-start gap-4">
-                <Link to="/dashboard" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
+                <Link to="/all-cards" className="px-5 mx-2 py-3 text-white duration-150 bg-indigo-600 rounded-lg hover:bg-indigo-700 active:shadow-lg">
                   Get started
                 </Link>
                 <Link target='_blank' to="https://github.com/wajaht-ali/Flashcards-app" className="px-5 mx-2 py-3 text-black duration-150 bg-white flex items-center gap-2 hover:text-black hover:bg-gray-200 rounded-lg active:shadow-lg w-[150px] text-md">
