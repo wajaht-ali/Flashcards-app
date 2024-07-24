@@ -22,3 +22,38 @@
     transform: translateX(250px); /* Slide in from the left */
   }
   
+  /* Add this CSS to your global stylesheet or within the Home component using styled-components or a similar solution */
+
+@keyframes flashcardMove {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flashcardBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.flashcard-animation {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #4f46e5; /* Indigo */
+  color: white;
+  border-radius: 8px;
+  animation: flashcardMove 3s infinite, flashcardBounce 2s infinite;
+}

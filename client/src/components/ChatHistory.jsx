@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaBarsStaggered } from "react-icons/fa6";
 import Layout from './Layout/Layout';
 import Sidebar from './Sidebar';
@@ -8,7 +8,7 @@ import axios from 'axios';
 import MarkDown from "react-markdown";
 import { FaRegCopy } from "react-icons/fa6";
 import { MdOutlineLibraryAdd } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { BsStars } from "react-icons/bs";
 
@@ -18,16 +18,18 @@ const Gemini = () => {
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState("");
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
     const handleCopyText = (text) => {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(text.prompt);
         alert("Text copied!");
     }
     const handleCopyNavigation = (text) => {
-        navigator.clipboard.writeText(text);
+        console.log(text)
+        navigator.clipboard.writeText(text.prompt);
         navigate("/dashboard/admin/create-card");
         alert("Navigated successfully!");
     }
@@ -46,6 +48,23 @@ const Gemini = () => {
             console.log(`Error with form submission ${error}`);
         }
     }
+    const getPromptData = async (id) => {
+        try {
+            const res = await axios.get(`/api/v1/chat/get-single-prompt/${id}`);
+            if (res.data.success) {
+                setPrompt("");
+                setResult(res.data.output);
+            }
+            else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with form submission ${error}`);
+        }
+    }
+    useEffect(() => {
+        getPromptData(id);
+    }, [id])
     return (
         <Layout>
             <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -58,12 +77,12 @@ const Gemini = () => {
 
                     <div className="h-[80vh] mx-auto shadow rounded-lg md:p-2 shadow-gray-300 flex flex-col items-center justify-between">
                         {result ? (
-                            <div className="md:w-[800px] h-full shadow-custom rounded-md p-2 overflow-y-scroll">
-                                <p className='text-center font-semibold text-lg'>Here is your Result!</p>
-                                <p><MarkDown>{result}</MarkDown></p>
+                            <div className="md:w-[800px] h-full shadow-custom rounded-md p-4 overflow-y-scroll">
+                                <p className='text-center my-3 text-blue-600 font-semibold text-lg'>{result.title}</p>
+                                <p><MarkDown>{result.prompt}</MarkDown></p>
                                 <div className='w-[100px] m-2 bg-gray-100 p-2 rounded flex flex-row items-center justify-center gap-x-3 cursor-pointer'>
                                     <abbr title="Copy text">
-                                        <FaRegCopy className="hover:text-blue-700" onClick={() => handleCopyText(result)} />
+                                        <FaRegCopy className="hover:text-blue-700" onClick={() => handleCopyText(result.prompt)} />
                                     </abbr>
                                     <abbr title="Copy text and create card">
                                         <MdOutlineLibraryAdd className="hover:text-blue-700" onClick={() => handleCopyNavigation(result)} />

@@ -31,6 +31,32 @@ export const chatController = async (req, res) => {
   }
 };
 
+// get single prompt by id
+export const getSinglePromptController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const output = await PromptModel.findById(id);
+    if (output) {
+      return res.status(201).send({
+        success: true,
+        message: "Prompt fetched successfully",
+        output,
+      });
+    } else {
+      return res.status(404).send({
+        success: false,
+        message: "Error with fetching prompt",
+      });
+    }
+  } catch (error) {
+    console.log(`Error with finding prompt: ${error}`);
+    res.status(404).send({
+      success: false,
+      message: "Error with fetching prompt",
+    });
+  }
+};
+
 //get all chats
 export const getPromptsController = async (req, res) => {
   try {
