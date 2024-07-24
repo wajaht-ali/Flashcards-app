@@ -32,34 +32,39 @@ const Dashboard = () => {
           </div>
 
           <div className="w-full flex flex-wrap items-center justify-around gap-y-4 mt-20">
-            <Link to={"/dashboard/admin/create-card"}>
-              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
-                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><FaPlus size={25} /></div>
-                <p className="mt-10 text-lg">Create Card</p>
+            <Link to="/dashboard/admin/create-card">
+              <div className="group flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                  <FaPlus size={25} />
+                </div>
+                <p className="mt-10 text-lg transition-colors group-hover:text-blue-600">
+                  Create Card
+                </p>
               </div>
             </Link>
+
             <Link to={"/dashboard/admin/create-subject"}>
-              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
-                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><CgFileAdd size={25} /></div>
-                <p className="mt-10 text-lg">Create Subject</p>
+              <div className="group flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full transition-colors group-hover:bg-blue-600 group-hover:text-white"><CgFileAdd size={25} /></div>
+                <p className="mt-10 text-lg transition-colors group-hover:text-blue-600">Create Subject</p>
               </div>
             </Link>
             <Link to={"/dashboard/admin/users"}>
-              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
-                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><FiUsers size={25} /></div>
-                <p className="mt-10 text-lg">All Users</p>
+              <div className="group flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full transition-colors group-hover:bg-blue-600 group-hover:text-white"><FiUsers size={25} /></div>
+                <p className="mt-10 text-lg transition-colors group-hover:text-blue-600">All Users</p>
               </div>
             </Link>
             <Link to={"/dashboard/admin/statistics"}>
-              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
-                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><ImStatsBars size={25} /></div>
-                <p className="mt-10 text-lg">Statistics</p>
+              <div className="group flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full transition-colors group-hover:bg-blue-600 group-hover:text-white"><ImStatsBars size={25} /></div>
+                <p className="mt-10 text-lg transition-colors group-hover:text-blue-600">Statistics</p>
               </div>
             </Link>
             <Link to={"/dashboard/admin/all-cards"}>
-              <div className="flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
-                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full hover:bg-gray-300"><PiCards size={25} /></div>
-                <p className="mt-10 text-lg">All Cards</p>
+              <div className="group flex flex-col items-center justify-center shadow-lg h-[200px] w-[300px] rounded-lg p-4 transition-all hover:scale-90 cursor-pointer hover:shadow-lg my-2 md:my-0">
+                <div className="w-auto table items-center p-4 bg-gray-200 rounded-full transition-colors group-hover:bg-blue-600 group-hover:text-white"><PiCards size={25} /></div>
+                <p className="mt-10 text-lg transition-colors group-hover:text-blue-600">All Cards</p>
               </div>
             </Link>
           </div>

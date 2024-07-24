@@ -7,6 +7,7 @@ import { FcCalendar } from "react-icons/fc";
 import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 import SearchInput from './SearchInput';
+import { HiOutlineTrash } from "react-icons/hi2";
 
 const AllCards = () => {
     const [cards, setCards] = useState([]);
@@ -55,6 +56,7 @@ const AllCards = () => {
         const creatorData = usersData.find((user) => user.id === card.creator.id);
 
         return {
+            _id: card._id,
             title: card.title,
             content: card.content,
             createdAt: formattedDate,
@@ -67,7 +69,21 @@ const AllCards = () => {
             },
         };
     });
-
+    const handleDelete = async (e, id) => {
+        e.preventDefault();
+        try {
+            const res = await axios.delete(`/api/v1/cards/delete-card/${id}`);
+            if (res.data.success) {
+                alert("Card deleted successfully!");
+                fetchCardsData();
+            }
+            else {
+                alert(res.data.message);
+            }
+        } catch (error) {
+            console.log(`Error with deleting card ${error}`)
+        }
+    }
     return (
         <Layout>
             <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -81,7 +97,7 @@ const AllCards = () => {
                             {
                                 cardDataArray.map((items, index) => {
                                     return (
-                                        <Link to={`/all-cards/card/${items.id}`} key={index}>
+                                        <Link className="relative" to={`/all-cards/card/${items._id}`} key={index}>
                                             <div className="rounded-xl bg-white p-3 text-center mx-4 md:mx-0 shadow-xl h-[200px] md:h-[250px] my-4">
                                                 <div
                                                     className="mx-auto flex h-12 w-12 -translate-y-8 transform items-center justify-center rounded-full bg-blue-400 shadow-lg shadow-teal-500/40 text-white">
@@ -99,6 +115,7 @@ const AllCards = () => {
                                                     </span>
                                                 </div>
                                                 <p className="mt-3 text-sm text-start text-gray-400">{items.content.substring(0, 80)}</p>
+                                                <button onClick={(event) => handleDelete(event, items._id)} className="absolute right-8 bottom-8 w-auto p-2 bg-red-500 text-white rounded-full hover:border hover:border-red-500 hover:text-red-500 hover:bg-white transition-all"><HiOutlineTrash size={20} /></button>
                                             </div>
                                         </Link>
                                     )

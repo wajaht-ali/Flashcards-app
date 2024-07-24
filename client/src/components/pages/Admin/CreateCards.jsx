@@ -62,7 +62,7 @@ const CreateCard = () => {
     // text area validation
     const myTextArea = useRef(null);
     const charTextResult = useRef(null);
-    const textAreaLimit = 1000;
+    const textAreaLimit = 20000;
     useEffect(() => {
         charResult.current.textContent = 0 + "/" + varLimit;
         charTextResult.current.textContent = 0 + "/" + textAreaLimit;
@@ -181,7 +181,7 @@ const CreateCard = () => {
                                     placeholder="Write your thoughts here..."
                                     onChange={(e) => setContent(e.target.value)}
                                     ref={myTextArea}
-                                    maxLength={1000} value={content}></textarea>
+                                    maxLength={20000} value={content}></textarea>
                                 <p className="text-limit-info text-end my-2 text-[14px] font-light"
                                     ref={charTextResult}></p>
                             </div>
