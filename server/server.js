@@ -18,7 +18,11 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "https://flashcards-app-gray.vercel.app",
+      "http://flashcards-app-gray.vercel.app",
+      "*",
+    ],
     methods: ["POST", "GET", "PUT", "DELETE"],
     withCredentials: true,
   })

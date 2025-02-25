@@ -38,7 +38,7 @@ const Login = () => {
         <Layout>
             <main className="bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center min-h-screen">
                 <div className="bg-white rounded-lg shadow-lg p-8 max-w-md my-3">
-                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Loin In</h2>
+                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
                     <form id="registrationForm" onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
