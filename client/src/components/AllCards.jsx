@@ -12,10 +12,10 @@ import { HiOutlineTrash } from "react-icons/hi2";
 const AllCards = () => {
     const [cards, setCards] = useState([]);
     const [usersData, setUsersData] = useState([]);
-
+    const API_KEY = import.meta.env.VITE_APP_API;
     const fetchCardsData = async () => {
         try {
-            const res = await axios.get("/api/v1/cards/all-cards");
+            const res = await axios.get(`${API_KEY}/api/v1/cards/all-cards`);
             if (res.data.success) {
                 setCards(res.data.output);
             } else {

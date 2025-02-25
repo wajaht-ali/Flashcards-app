@@ -11,11 +11,12 @@ const SignUP = () => {
     const [answer, setAnswer] = useState("");
     const [gender, setGender] = useState("");
     const navigate = useNavigate();
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await axios.post("/api/v1/userAuth/signup", { name, email, password, answer, gender });
+            const res = await axios.post(`${API_KEY}/api/v1/userAuth/signup`, { name, email, password, answer, gender });
             if (res.data.success) {
                 alert("Account created successfully!");
                 navigate("/login");

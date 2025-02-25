@@ -14,9 +14,10 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        const API_KEY = import.meta.env.VITE_APP_API;
         try {
             e.preventDefault();
-            const res = await axios.post("/api/v1/userAuth/login", { email, password });
+            const res = await axios.post(`${API_KEY}/api/v1/userAuth/login`, { email, password });
             if (res && res.data.success) {
                 setAuth({
                     ...auth,
