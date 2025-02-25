@@ -36,7 +36,7 @@ export default function Dropdown() {
                 token: "",
             });
             localStorage.removeItem('cardAuth');
-            navigate('/');
+            window.location.href = "/";
         } catch (error) {
             console.log(`Error with logging out ${error}`);
         }

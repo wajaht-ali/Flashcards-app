@@ -24,7 +24,7 @@ const Login = () => {
                     token: res.data.token,
                 })
                 localStorage.setItem('cardAuth', JSON.stringify(res.data));
-                navigate("/");
+                window.location.href = "/";
             }
             else {
                 alert(res.data.message);
