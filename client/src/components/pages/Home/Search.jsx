@@ -15,10 +15,10 @@ const Search = () => {
     const [usersData, setUsersData] = useState([]);
     const [search, setSearch] = useSearch();
 
-
+    const API_KEY = import.meta.env.VITE_APP_API;
     const fetchUsersData = async () => {
         try {
-            const res = await axios.get("/api/v1/userAuth/get-all-users");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
             if (res.data.success) {
                 setUsersData(res.data.users);
             } else {

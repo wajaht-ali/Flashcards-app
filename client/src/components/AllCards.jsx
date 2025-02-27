@@ -13,6 +13,7 @@ const AllCards = () => {
     const [cards, setCards] = useState([]);
     const [usersData, setUsersData] = useState([]);
     const API_KEY = import.meta.env.VITE_APP_API;
+
     const fetchCardsData = async () => {
         try {
             const res = await axios.get(`${API_KEY}/api/v1/cards/all-cards`);
@@ -28,7 +29,7 @@ const AllCards = () => {
 
     const fetchUsersData = async () => {
         try {
-            const res = await axios.get("/api/v1/userAuth/get-all-users");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
             if (res.data.success) {
                 setUsersData(res.data.users);
             } else {
@@ -72,7 +73,7 @@ const AllCards = () => {
     const handleDelete = async (e, id) => {
         e.preventDefault();
         try {
-            const res = await axios.delete(`/api/v1/cards/delete-card/${id}`);
+            const res = await axios.delete(`${API_KEY}/api/v1/cards/delete-card/${id}`);
             if (res.data.success) {
                 alert("Card deleted successfully!");
                 fetchCardsData();

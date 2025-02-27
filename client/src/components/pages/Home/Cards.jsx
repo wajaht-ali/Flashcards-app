@@ -11,10 +11,11 @@ import SearchInput from "../../SearchInput.jsx";
 const AllCards = () => {
     const [cards, setCards] = useState([]);
     const [usersData, setUsersData] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const fetchCardsData = async () => {
         try {
-            const res = await axios.get("/api/v1/cards/all-cards");
+            const res = await axios.get(`${API_KEY}/api/v1/cards/all-cards`);
             if (res.data.success) {
                 setCards(res.data.output);
             } else {
@@ -27,7 +28,7 @@ const AllCards = () => {
 
     const fetchUsersData = async () => {
         try {
-            const res = await axios.get("/api/v1/userAuth/get-all-users");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
             if (res.data.success) {
                 setUsersData(res.data.users);
             } else {

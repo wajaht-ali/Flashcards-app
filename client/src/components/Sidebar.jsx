@@ -8,9 +8,11 @@ import { FcDeleteDatabase } from "react-icons/fc";
 
 const Sidebar = ({info}) => {
     const [output, setOutput] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
+
     const fetchData = async () => {
         try {
-            const res = await axios.get("/api/v1/chat/get-prompts");
+            const res = await axios.get(`${API_KEY}/api/v1/chat/get-prompts`);
             if (res.data.success) {
                 // console.log(res.data);
                 setOutput(res.data.output);

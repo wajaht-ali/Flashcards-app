@@ -8,9 +8,11 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, 
 
 const PromptsChart = () => {
     const [prompts, setPrompts] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
+    
     const fetchGeminiData = async () => {
         try {
-            const res = await axios.get("/api/v1/chat/get-prompts");
+            const res = await axios.get(`${API_KEY}/api/v1/chat/get-prompts`);
             if (res.data.success) {
                 setPrompts(res.data.output);
             } else {

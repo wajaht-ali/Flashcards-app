@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 const SearchInput = () => {
     const [values, setValues] = useSearch();
     const navigate = useNavigate();
+
+    const API_KEY = import.meta.env.VITE_APP_API;
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.get(`/api/v1/cards/search/${values.keyword}`);
+            const res = await axios.get(`${API_KEY}/api/v1/cards/search/${values.keyword}`);
             setValues({ ...values, results: res.data });
             navigate("/search");
         } catch (error) {

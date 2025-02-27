@@ -12,10 +12,10 @@ const CardInfo = () => {
     const [creator, setCreator] = useState({});
 
     const { id } = useParams();
-
+    const API_KEY = import.meta.env.VITE_APP_API;
     const fetchCard = async (id) => {
         try {
-            const res = await axios.get(`/api/v1/cards/get-single-card/${id}`);
+            const res = await axios.get(`${API_KEY}/api/v1/cards/get-single-card/${id}`);
             console.log(res)
             if (res.data.success) {
                 setCardData(res.data.card);
@@ -29,7 +29,7 @@ const CardInfo = () => {
     }
     const fetchSubject = async (subjectId) => {
         try {
-            const res = await axios.get(`/api/v1/subjects/get-subject/${subjectId}`);
+            const res = await axios.get(`${API_KEY}/api/v1/subjects/get-subject/${subjectId}`);
             console.log(res)
             if (res.data.success) {
                 setSubject(res.data.subject);
@@ -43,7 +43,7 @@ const CardInfo = () => {
     }
     const fetchCreator = async (creatorId) => {
         try {
-            const res = await axios.get(`/api/v1/userAuth/get-user/${creatorId}`);
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-user/${creatorId}`);
             console.log(res)
             if (res.data.success) {
                 setCreator(res.data.user);

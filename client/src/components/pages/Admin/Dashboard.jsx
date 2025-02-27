@@ -14,7 +14,8 @@ import { PiCards } from "react-icons/pi";
 const Dashboard = () => {
   const [auth, setAuth] = useAuth();
   const [sidebar, setSidebar] = useState(false);
-
+  const API_KEY = import.meta.env.VITE_APP_API;
+  
   const handleSidebar = () => {
     setSidebar(!sidebar);
   }

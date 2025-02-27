@@ -8,10 +8,11 @@ import axios from 'axios';
 export default function ProtectedRoute() {
     const [ok, setOk] = useState(false);
     const [auth, setAuth] = useAuth();
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get("/api/v1/userAuth/user-Auth");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/user-Auth`);
             if (res.data.ok) {
                 setOk(true);
             }

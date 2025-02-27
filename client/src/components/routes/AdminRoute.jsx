@@ -9,10 +9,11 @@ import Spinner from '../Spinner';
 export default function AdminRoute() {
     const [ok, setOk] = useState(false);
     const [auth, setAuth] = useAuth();
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get(`/api/v1/userAuth/admin-auth`);
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/admin-auth`);
             if (res.data.ok) {
                 setOk(true)
             }

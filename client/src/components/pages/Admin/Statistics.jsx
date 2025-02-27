@@ -15,13 +15,14 @@ const Statistics = () => {
     const [cardsData, setCardsData] = useState([]);
     const [subjData, setSubjData] = useState([]);
     const [prompts, setPrompts] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
     const fetchUserData = async () => {
         try {
-            const res = await axios.get("/api/v1/userAuth/get-all-users");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
             if (res.data.success) {
                 setUsersData(res.data.users);
             } else {
@@ -33,7 +34,7 @@ const Statistics = () => {
     };
     const fetchCardsData = async () => {
         try {
-            const res = await axios.get("/api/v1/cards/all-cards");
+            const res = await axios.get(`${API_KEY}/api/v1/cards/all-cards`);
             if (res.data.success) {
                 setCardsData(res.data.output);
             } else {
@@ -45,7 +46,7 @@ const Statistics = () => {
     }
     const fetchSubjData = async () => {
         try {
-            const res = await axios.get("/api/v1/subjects/get-all-subjects");
+            const res = await axios.get(`${API_KEY}/api/v1/subjects/get-all-subjects`);
             if (res.data.success) {
                 setSubjData(res.data.output);
             } else {
@@ -57,7 +58,7 @@ const Statistics = () => {
     }
     const fetchGeminiData = async () => {
         try {
-            const res = await axios.get("/api/v1/chat/get-prompts");
+            const res = await axios.get(`${API_KEY}/api/v1/chat/get-prompts`);
             console.log(res.data.output);
             if (res.data.success) {
                 setPrompts(res.data.output);

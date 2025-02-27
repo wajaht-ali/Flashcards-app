@@ -11,13 +11,14 @@ import { FcBusinesswoman, FcBusinessman } from "react-icons/fc";
 const Users = () => {
     const [sidebar, setSidebar] = useState(false);
     const [users, setUsers] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
     const fetchUserData = async () => {
         try {
-            const res = await axios.get("/api/v1/userAuth/get-all-users");
+            const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
             if (res.data.success) {
                 setUsers(res.data.users);
             }
@@ -36,7 +37,7 @@ const Users = () => {
         try {
             const ans = prompt("Do you really want to delete this user?");
             if (ans === "YES" || ans === "yes") {
-                const res = await axios.delete(`/api/v1/userAuth/delete-user/${id}`);
+                const res = await axios.delete(`${API_KEY}/api/v1/userAuth/delete-user/${id}`);
                 if (res.data.success) {
                     fetchUserData();
                     alert("User deleted successfully!");

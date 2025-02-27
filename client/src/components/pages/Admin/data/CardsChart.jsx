@@ -8,10 +8,11 @@ let cardsCount, subjectCount = 0;
 const CardsChart = () => {
     const [cardsData, setCardsData] = useState([]);
     const [subjData, setSubjData] = useState([]);
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const fetchCardsData = async () => {
         try {
-            const res = await axios.get("/api/v1/cards/all-cards");
+            const res = await axios.get(`${API_KEY}/api/v1/cards/all-cards`);
             if (res.data.success) {
                 setCardsData(res.data.output);
             } else {
@@ -23,7 +24,7 @@ const CardsChart = () => {
     }
     const fetchSubjData = async () => {
         try {
-            const res = await axios.get("/api/v1/subjects/get-all-subjects");
+            const res = await axios.get(`${API_KEY}/api/v1/subjects/get-all-subjects`);
             if (res.data.success) {
                 setSubjData(res.data.output);
             } else {

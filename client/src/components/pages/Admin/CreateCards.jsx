@@ -17,6 +17,7 @@ const CreateCard = () => {
     const [content, setContent] = useState("");
     const [subjData, setSubjData] = useState([]);
 
+    const API_KEY = import.meta.env.VITE_APP_API;
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
@@ -24,7 +25,7 @@ const CreateCard = () => {
     const handleFormSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await axios.post("/api/v1/cards/create-card", { title, subject, status, content, creator });
+            const res = await axios.post(`${API_KEY}/api/v1/cards/create-card`, { title, subject, status, content, creator });
             if (res.data.success) {
                 setTitle("");
                 setSubject("");
@@ -41,7 +42,7 @@ const CreateCard = () => {
     }
     const fetchSubjectsData = async () => {
         try {
-            const res = await axios.get("/api/v1/subjects/get-all-subjects");
+            const res = await axios.get(`${API_KEY}/api/v1/subjects/get-all-subjects`);
             if (res.data.success) {
                 setSubjData(res.data.output);
             }

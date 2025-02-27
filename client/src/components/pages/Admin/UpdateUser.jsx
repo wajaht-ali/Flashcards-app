@@ -12,10 +12,11 @@ const UpdateUser = () => {
   const [gender, setGender] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const API_KEY = import.meta.env.VITE_APP_API;
+  
   const fetchUserData = async (id) => {
     try {
-      const res = await axios.get(`/api/v1/userAuth/get-user/${id}`);
+      const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-user/${id}`);
       if (res.data.success) {
         console.log(res.data);
         setName(res.data.user.name);
@@ -33,7 +34,7 @@ const UpdateUser = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const res = await axios.put(`/api/v1/userAuth/update-user/${id}`, { name, email, password, answer, gender });
+      const res = await axios.put(`${API_KEY}/api/v1/userAuth/update-user/${id}`, { name, email, password, answer, gender });
       if (res.data.success) {
         alert("User updated successfully!");
         navigate("/dashboard/admin/users");

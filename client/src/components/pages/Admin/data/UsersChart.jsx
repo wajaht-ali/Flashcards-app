@@ -8,6 +8,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LabelList, CartesianGrid,
 let usersCount = 0;
 const UsersChart = () => {
   const [usersData, setUsersData] = useState([]);
+  const API_KEY = import.meta.env.VITE_APP_API;
+
   const sampleUsers = [
     { createdAt: '2024-05-17T08:49:08.628Z' },
     { createdAt: '2024-06-12T10:23:15.456Z' },
@@ -18,7 +20,7 @@ const UsersChart = () => {
 
   const fetchUserData = async () => {
     try {
-      const res = await axios.get("/api/v1/userAuth/get-all-users");
+      const res = await axios.get(`${API_KEY}/api/v1/userAuth/get-all-users`);
       if (res.data.success) {
         setUsersData(res.data.users);
       } else {

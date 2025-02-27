@@ -14,11 +14,11 @@ import { BsStars } from "react-icons/bs";
 
 const Gemini = () => {
     const [sidebar, setSidebar] = useState(false);
-    // card states
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState("");
     const navigate = useNavigate();
     const {id} = useParams();
+    const API_KEY = import.meta.env.VITE_APP_API;
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -36,7 +36,7 @@ const Gemini = () => {
     const handleFormSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await axios.post("/api/v1/chat/ask-gemini", { prompt });
+            const res = await axios.post(`${API_KEY}/api/v1/chat/ask-gemini`, { prompt });
             if (res.data.success) {
                 setPrompt("");
                 setResult(res.data.text);
@@ -50,7 +50,7 @@ const Gemini = () => {
     }
     const getPromptData = async (id) => {
         try {
-            const res = await axios.get(`/api/v1/chat/get-single-prompt/${id}`);
+            const res = await axios.get(`${API_KEY}/api/v1/chat/get-single-prompt/${id}`);
             if (res.data.success) {
                 setPrompt("");
                 setResult(res.data.output);

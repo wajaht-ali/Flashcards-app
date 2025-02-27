@@ -5,7 +5,6 @@ import { useAuth } from '../../../context/auth'
 import { FaBarsStaggered } from "react-icons/fa6";
 import Sidebar from './Sidebar';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const CreateSubject = () => {
     const [auth, setAuth] = useAuth();
@@ -16,10 +15,11 @@ const CreateSubject = () => {
     const handleSidebar = () => {
         setSidebar(!sidebar);
     }
+    const API_KEY = import.meta.env.VITE_APP_API;
     const handleFormSubmit = async (e) => {
         try {
             e.preventDefault();
-            const res = await axios.post("/api/v1/subjects/create-subject", { name });
+            const res = await axios.post(`${API_KEY}/api/v1/subjects/create-subject`, { name });
             if (res.data.success) {
                 setName("");
                 alert("Subject created successfully!");
